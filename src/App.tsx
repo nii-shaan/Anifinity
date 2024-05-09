@@ -1,11 +1,13 @@
 
-import NavBar from "./header/NavBar";
+import Home from "./pages/Home";
+import NavBar from "./pages/header/NavBar";
 
 function App() {
   return (
     <>
     <NavBar/>
-      <div className="bg-[#0f1010] h-screen"></div>
+    <Home/>
+     
     </>
   );
 }
