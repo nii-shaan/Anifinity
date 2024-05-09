@@ -1,9 +1,13 @@
 
+import NavBar from "./header/NavBar";
 
 function App() {
   return (
-    <div className="bg-red-500">setup</div>
-  )
+    <>
+    <NavBar/>
+      <div className="bg-[#0f1010] h-screen"></div>
+    </>
+  );
 }
 
-export default App
+export default App;
