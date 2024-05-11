@@ -17,12 +17,12 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily:{
-        f1:`"Sedan SC", serif`
-
+      fontFamily: {
+        f1: ["Artifika", "serif"],
       },
       backgroundImage: {
-        vignette: "linear-gradient(to top right, rgba(0,0,0,0.9) 20%, transparent)",
+        vignette:
+          "linear-gradient(to top right, rgba(0,0,0,0.9) 20%, transparent)",
       },
       keyframes: {
         "accordion-down": {
