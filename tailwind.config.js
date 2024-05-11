@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily:{
+        f1:`"Sedan SC", serif`
+
+      },
+      backgroundImage: {
+        vignette: "linear-gradient(to top right, rgba(0,0,0,0.9) 20%, transparent)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -34,4 +41,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
