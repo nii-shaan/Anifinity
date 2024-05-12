@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import Carousel from "./Carousel";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 import {
   loadSpotlightData,
   loadTopAiringData,
   loadMostFavData,
   loadMostPopularData,
 } from "../store/index";
-import AnimeBlock from "@/components/me/AnimeBlock";
-import type { RootState } from "@/store/Store";
-import type { DataOfSections } from "@/store/types";
+
+import Sections from "./Sections";
 
 function Home() {
   const dispatch = useDispatch();
@@ -32,25 +32,13 @@ function Home() {
       .then((data) => dispatch(loadMostFavData(data.results)));
   }, []);
 
-  const data: DataOfSections[] = useSelector(
-    (state: RootState) => state.topAiring.data
-  );
-  console.log(data);
-
   return (
-    <div className="bg-[#0f1010] h-screen">
+    <div className="bg-[#0f1010]  ">
       <div id="carouselSection" className="w-full h-[500px] bg-white  ">
         <Carousel />
       </div>
-      <div id="sections" className="b h-80">
-        <div
-          id="topairing"
-          className=" flex items-center justify-center flex-wrap gap-5"
-        >
-          {data.map((item) => (
-            <AnimeBlock key={item.id} data={item} />
-          ))}
-        </div>
+      <div id="Sections" className="w-full ">
+        <Sections />
       </div>
     </div>
   );
