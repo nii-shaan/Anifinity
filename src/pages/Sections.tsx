@@ -22,7 +22,7 @@ function Sections() {
         <div id="topAiringSection" className="h-[950px] w-[310px] ">
           <div
             id="sectionTitle"
-            className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b rounded-xl mb-5 py-6 text-white"
+            className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b border-[#565656] rounded-xl mb-5 py-6 text-white"
           >
             Top Airing
           </div>
@@ -45,7 +45,7 @@ function Sections() {
         <div id="mostPopular" className="h-[950px]  w-[320px]">
           <div
             id="sectionTitle"
-            className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b rounded-xl mb-5 py-6 text-white"
+            className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b border-[#565656] rounded-xl mb-5 py-6 text-white"
           >
             Most Popular
           </div>
@@ -67,7 +67,7 @@ function Sections() {
         <div id="mostFavs" className="h-[950px]  w-[320px]">
           <div
             id="sectionTitle"
-            className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b rounded-xl mb-5 py-6 text-white"
+            className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b border-[#565656] rounded-xl mb-5 py-6 text-white"
           >
             Most Favorite
           </div>
