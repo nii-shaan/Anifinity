@@ -7,7 +7,9 @@ import {
   loadTopAiringData,
   loadMostFavData,
   loadMostPopularData,
+  loadLatestEpData,
 } from "../store/index";
+import LatestEps from "./LatestEps";
 
 import Sections from "./Sections";
 
@@ -32,6 +34,10 @@ function Home() {
       .then((data) => dispatch(loadMostFavData(data.results)));
   }, []);
 
+  fetch("http://localhost:3000/anime/zoro/recent-episodes")
+    .then((res) => res.json())
+    .then((data) => dispatch(loadLatestEpData(data.results)));
+
   return (
     <div className="bg-[#0f1010]  ">
       <div id="carouselSection" className="w-full h-[500px] bg-white  ">
@@ -39,6 +45,9 @@ function Home() {
       </div>
       <div id="Sections" className="w-full ">
         <Sections />
+      </div>
+      <div className="w-full ">
+        <LatestEps />
       </div>
     </div>
   );

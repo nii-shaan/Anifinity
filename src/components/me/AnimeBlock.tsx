@@ -52,7 +52,7 @@ function AnimeBlock({ data }: AnimeBlockProps) {
           className="h-[300px] w-[300px] bg-[#0f1010] "
         >
           {hoverData ? (
-            <div className="text-white h-full w-full">
+            <div className="text-white h-full w-full ">
               <div
                 id="description"
                 className={` h-[45%] overflow-hidden text-[12px] ${
@@ -91,7 +91,10 @@ function AnimeBlock({ data }: AnimeBlockProps) {
                 </div>
               </div>
               <div id="epInfoAndWatch" className="h-[15%] w-full">
-                <Button variant="outline" className="w-full h-full bg-transparent">
+                <Button
+                  variant="outline"
+                  className="w-full h-full bg-transparent"
+                >
                   Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
                 </Button>
               </div>
@@ -101,7 +104,7 @@ function AnimeBlock({ data }: AnimeBlockProps) {
           )}
         </HoverCardContent>
 
-        <div className="w-72 h-28 flex  justify-center gap-2 bg-[#222831] rounded-lg shadow p-2 overflow-hidden font-f1 text-white cursor-pointer  ">
+        <div className="w-72 h-28 flex  justify-center gap-2 bg-[#222831] rounded-lg shadow p-2 overflow-hidden font-f1 text-white cursor-pointer min-w-[300px]  ">
           <div
             onMouseEnter={() => setTrackMouse((prev) => !prev)}
             className="flex gap-2 bg-neutral-500 w-20 h-5/5 shrink-0 rounded-lg bg-cover cursor-pointer"
