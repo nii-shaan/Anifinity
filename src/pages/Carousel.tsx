@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import type { RootState } from "@/store/Store";
 
 import type { DataOfSections } from "@/store/types";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ThreeDots } from "react-loader-spinner";
 
 function Carousel() {
   const { loaded, data } = useSelector((state: RootState) => state.spotlight);
@@ -49,8 +51,24 @@ function Carousel() {
         </Swiper>
       </>
     );
+  } else {
   }
-  return <div className="h-full bg-red-400">Loading</div>;
+  return (
+    <div className="w-full h-[500px] flex justify-center ">
+      <Skeleton className="w-[98%] h-[500px] bg-[#3b3a3a] flex items-center justify-center">
+        <ThreeDots
+          visible={true}
+          height="120"
+          width="120"
+          color="#4fa94d"
+          radius="9"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </Skeleton>
+    </div>
+  );
 }
 
 export default Carousel;

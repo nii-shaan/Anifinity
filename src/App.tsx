@@ -1,5 +1,6 @@
 
 import Home from "./pages/Home";
+import Footer from "./pages/footer/Footer";
 import NavBar from "./pages/header/NavBar";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
     <NavBar/>
     <Home/>
+    <Footer/>
      
     </>
   );
