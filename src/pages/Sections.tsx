@@ -3,6 +3,8 @@ import type { RootState } from "@/store/Store";
 import type { DataOfSections } from "@/store/types";
 import { useSelector } from "react-redux";
 import { CiSquareMore } from "react-icons/ci";
+import { Skeleton } from "@/components/ui/skeleton";
+
 function Sections() {
   const topAiringData: DataOfSections[] = useSelector(
     (state: RootState) => state.topAiring.data
@@ -26,13 +28,22 @@ function Sections() {
           >
             Top Airing
           </div>
-          <ul id="items" className="flex flex-col gap-8 items-center">
-            {topAiringData.map((item: DataOfSections) => (
-              <li key={item.id} className="">
-                <AnimeBlock data={item} />
-              </li>
-            ))}
-          </ul>
+
+          {topAiringData.length > 0 ? (
+            <ul id="items" className="flex flex-col gap-8 items-center">
+              {topAiringData.map((item: DataOfSections) => (
+                <li key={item.id} className="">
+                  <AnimeBlock data={item} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
+              {[...Array(6)].map((_) => (
+                <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+              ))}
+            </div>
+          )}
 
           <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
             <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
@@ -42,20 +53,28 @@ function Sections() {
           </div>
         </div>
 
-        <div id="mostPopular" className="h-[950px]  w-[320px]">
+        <div id="mostPopular" className="h-[950px]  w-[310px]">
           <div
             id="sectionTitle"
             className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b border-[#565656] rounded-xl mb-5 py-6 text-white"
           >
             Most Popular
           </div>
-          <ul id="items" className="flex flex-col gap-8 items-center">
-            {mostPopularData.map((item: DataOfSections) => (
-              <li key={item.id} className="">
-                <AnimeBlock data={item} />
-              </li>
-            ))}
-          </ul>
+          {mostPopularData.length > 0 ? (
+            <ul id="items" className="flex flex-col gap-8 items-center">
+              {mostPopularData.map((item: DataOfSections) => (
+                <li key={item.id} className="">
+                  <AnimeBlock data={item} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
+              {[...Array(6)].map((_) => (
+                <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+              ))}
+            </div>
+          )}
           <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
             <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
               More. . .
@@ -71,13 +90,21 @@ function Sections() {
           >
             Most Favorite
           </div>
-          <ul id="items" className="flex flex-col gap-8 items-center">
-            {mostFavsData.map((item: DataOfSections) => (
-              <li key={item.id} className="">
-                <AnimeBlock data={item} />
-              </li>
-            ))}
-          </ul>
+          {mostFavsData.length > 0 ? (
+            <ul id="items" className="flex flex-col gap-8 items-center">
+              {mostFavsData.map((item: DataOfSections) => (
+                <li key={item.id} className="">
+                  <AnimeBlock data={item} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
+              {[...Array(6)].map((_) => (
+                <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+              ))}
+            </div>
+          )}
           <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
             <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
               More. . .
