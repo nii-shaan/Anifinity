@@ -3,6 +3,7 @@ import type { DataOfSections } from "@/store/types";
 import { RootState } from "@/store/Store";
 import AnimeBlock from "@/components/me/AnimeBlock";
 import { CiSquareMore } from "react-icons/ci";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function LatestEps() {
   const latestEpsData: DataOfSections[] = useSelector(
@@ -16,16 +17,25 @@ function LatestEps() {
         <div id="title" className=" text-3xl text-white ml-5 py-2">
           Latest Episodes
         </div>
-        <ul
-          id="items"
-          className="mt-2 pb-5 flex flex-wrap justify-evenly gap-y-8 border-t pt-6"
-        >
-          {latestEpsData.map((item) => (
-            <li key={item.id}>
-              <AnimeBlock data={item} />
-            </li>
-          ))}
-        </ul>
+
+        {latestEpsData.length > 0 ? (
+          <ul
+            id="items"
+            className="mt-2 pb-5 flex flex-wrap justify-evenly gap-y-8 border-t pt-6"
+          >
+            {latestEpsData.map((item: DataOfSections) => (
+              <li key={item.id} className="">
+                <AnimeBlock data={item} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="mt-2 pb-5 flex flex-wrap justify-evenly gap-y-8 border-t pt-6">
+            {[...Array(12)].map((_) => (
+              <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+            ))}
+          </div>
+        )}
 
         <div
           id="moreBtn"
