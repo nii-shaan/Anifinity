@@ -49,7 +49,7 @@ function AnimeBlock({ data }: AnimeBlockProps) {
       <HoverCard openDelay={0} closeDelay={50}>
         <HoverCardContent
           side={"left" || "right"}
-          className="h-[300px] w-[300px] bg-[#0f1010] "
+          className="w-[300px] bg-[#0f1010] "
         >
           {hoverData ? (
             <div className="text-white h-full w-full ">
@@ -65,7 +65,7 @@ function AnimeBlock({ data }: AnimeBlockProps) {
               </div>
               <div
                 id="animeInfo"
-                className="  text-[#96e1a9] h-[40%] w-full text-sm px-2 "
+                className="  text-[#96e1a9] h-[40%] w-full text-sm px-2 py-4 "
               >
                 <div>
                   <span className="text-[#B4CDE6]">Title:</span>{" "}
