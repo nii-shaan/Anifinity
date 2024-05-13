@@ -8,10 +8,12 @@ import {
   loadMostFavData,
   loadMostPopularData,
   loadLatestEpData,
+  loadTopUpcommingData,
 } from "../store/index";
 import LatestEps from "./LatestEps";
 
 import Sections from "./Sections";
+import TopUpcomming from "./TopUpcomming";
 
 function Home() {
   const dispatch = useDispatch();
@@ -38,6 +40,10 @@ function Home() {
     .then((res) => res.json())
     .then((data) => dispatch(loadLatestEpData(data.results)));
 
+  fetch("http://localhost:3000/anime/zoro/top-upcoming")
+    .then((res) => res.json())
+    .then((data) => dispatch(loadTopUpcommingData(data.results)));
+
   return (
     <div className="bg-[#0f1010]  ">
       <div id="carouselSection" className="w-full h-[500px] bg-white  ">
@@ -48,6 +54,9 @@ function Home() {
       </div>
       <div className="w-full ">
         <LatestEps />
+      </div>
+      <div className="w-full">
+        <TopUpcomming />
       </div>
     </div>
   );
