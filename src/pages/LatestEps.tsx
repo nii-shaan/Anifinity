@@ -31,8 +31,8 @@ function LatestEps() {
           </ul>
         ) : (
           <div className="mt-2 pb-5 flex flex-wrap justify-evenly gap-y-8 border-t pt-6">
-            {[...Array(12)].map((_) => (
-              <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+            {[...Array(12)].map((_,i) => (
+              <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
             ))}
           </div>
         )}

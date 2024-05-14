@@ -6,6 +6,7 @@ import { loadMostPopularData } from "./slices/mostPolpular";
 import { loadSpotlightData } from "./slices/spotlight";
 import { loadTopAiringData } from "./slices/topairing";
 import { loadTopUpcommingData } from "./slices/topUpcomming";
+import { loadTrendingData } from "./slices/trending";
 
 export {
   store,
@@ -15,4 +16,5 @@ export {
   loadSpotlightData,
   loadTopAiringData,
   loadTopUpcommingData,
+  loadTrendingData,
 };

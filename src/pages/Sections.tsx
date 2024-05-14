@@ -39,8 +39,8 @@ function Sections() {
             </ul>
           ) : (
             <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
-              {[...Array(6)].map((_) => (
-                <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+              {[...Array(6)].map((_,i) => (
+                <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
               ))}
             </div>
           )}
@@ -70,8 +70,8 @@ function Sections() {
             </ul>
           ) : (
             <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
-              {[...Array(6)].map((_) => (
-                <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+              {[...Array(6)].map((_,i) => (
+                <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
               ))}
             </div>
           )}
@@ -100,8 +100,8 @@ function Sections() {
             </ul>
           ) : (
             <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
-              {[...Array(6)].map((_) => (
-                <Skeleton className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+              {[...Array(6)].map((_,i) => (
+                <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
               ))}
             </div>
           )}

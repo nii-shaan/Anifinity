@@ -5,6 +5,7 @@ import mostPolpularReducer from "./slices/mostPolpular";
 import mostFavReducer from "./slices/mostFav";
 import latestEpReducer from "./slices/latestEp";
 import topUpcommingReducer from "./slices/topUpcomming";
+import trendingReducer from "./slices/trending";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     mostFav: mostFavReducer,
     latestEp: latestEpReducer,
     topUpcomming: topUpcommingReducer,
+    trending: trendingReducer,
   },
 });
 
