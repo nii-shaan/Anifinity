@@ -22,7 +22,7 @@ module.exports = {
       },
       backgroundImage: {
         vignette:
-          "linear-gradient(to top right, rgba(0,0,0,0.9) 20%, transparent)",
+          "linear-gradient(to  right, rgba(0,0,0,0.9) 30%, transparent)",
       },
       keyframes: {
         "accordion-down": {

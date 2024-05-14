@@ -23,17 +23,17 @@ function Home() {
    * Tried Fetching Api 3 times
    */
   useEffect(() => {
-    fetch("http://localhost:3000/anime/zoro/top-airing")
+    fetch("http://localhost:4000/anime/home")
       .then((res) => res.json())
-      .then((data) => dispatch(loadSpotlightData(data.results)))
+      .then((data) => dispatch(loadSpotlightData(data.spotlightAnimes)))
       .catch(() => {
-        fetch("http://localhost:3000/anime/zoro/top-airing")
+        fetch("http://localhost:4000/anime/home")
           .then((res) => res.json())
-          .then((data) => dispatch(loadSpotlightData(data.results)))
+          .then((data) => dispatch(loadSpotlightData(data.spotlightAnimes)))
           .catch(() => {
-            fetch("http://localhost:3000/anime/zoro/top-airing")
+            fetch("http://localhost:4000/anime/home")
               .then((res) => res.json())
-              .then((data) => dispatch(loadSpotlightData(data.results)));
+              .then((data) => dispatch(loadSpotlightData(data.spotlightAnimes)));
           });
       });
 
@@ -110,7 +110,7 @@ function Home() {
 
   return (
     <div className="bg-[#0f1010] w-full  ">
-      <div id="carouselSection" className="w-full min-h-[500px] h-[500px] ">
+      <div id="carouselSection" className="w-full min-h-[500px] h-[600px] ">
         <Carousel />
       </div>
       <div className=" w-full h-[400px] mt-4 flex justify-center items-center">

@@ -1,9 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { DataOfSections } from "../types";
+
+export interface Data {
+  rank: number;
+  id: string;
+  name: string;
+  description: string;
+  poster: string;
+  jname: string;
+  episodes: {
+    sub: number;
+    dub: number;
+  };
+  otherInfo: string[];
+}
 
 interface spotlightState {
   loaded: boolean;
-  data: DataOfSections[];
+  data: Data[];
 }
 const initialState: spotlightState = {
   loaded: false,

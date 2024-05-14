@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { LuArrowUpDown } from "react-icons/lu";
 import { Navigation, Scrollbar, Autoplay, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -6,14 +7,16 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/Store";
-
-import type { DataOfSections } from "@/store/types";
+import type { Data } from "@/store/slices/spotlight";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ThreeDots } from "react-loader-spinner";
+import { FaRegPlayCircle } from "react-icons/fa";
+import { CiCircleInfo } from "react-icons/ci";
+import { Button } from "@/components/ui/button";
 
 function Carousel() {
   const { loaded, data } = useSelector((state: RootState) => state.spotlight);
-  // console.log(loaded);
+  console.log(data);
 
   if (loaded) {
     return (
@@ -23,28 +26,90 @@ function Carousel() {
           keyboard={true}
           modules={[Navigation, Scrollbar, Autoplay, Keyboard]}
           autoplay={{
-            delay: 2500,
+            delay: 4500,
           }}
           scrollbar={{
             hide: false,
+            draggable: true,
           }}
           loop={true}
           navigation
           spaceBetween={0}
           slidesPerView={1}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
           className="h-full w-full"
         >
-          {data.map((data: DataOfSections) => (
+          {data.map((data: Data) => (
             <SwiperSlide key={data.id} className="h-full w-full ">
               <div
                 className="relative h-full w-full bg-cover bg-no-repeat bg-center"
-                style={{ backgroundImage: `url(${data.image})` }}
+                style={{ backgroundImage: `url(${data.poster})` }}
               >
                 <div className="absolute inset-0"></div>
                 <div className="absolute inset-0 bg-vignette"></div>
-                <span className="relative font-f1 ">{data.id}</span>
+                {/* <span className="relative font-f1 ">{data.id}</span> */}
+                <div
+                  id="secOne"
+                  className="h-[60%] w-full text-white relative z-10 "
+                >
+                  <div
+                    id="rank"
+                    className=" flex justify-start gap-x-1 pl-8 pt-4 "
+                  >
+                    <LuArrowUpDown className="h-6 w-6 mt-2.5" />
+                    <span className="text-5xl text-[#96e1a9]">{data.rank}</span>
+                  </div>
+                  <div
+                    id="title"
+                    className={`text-[#96e1a9] max-w-[300px] pl-8 pt-5 ${
+                      data.name.length < 20
+                        ? "text-4xl"
+                        : data.name.length < 50
+                        ? "text-xl"
+                        : "text-lg"
+                    }`}
+                  >
+                    {data.name}
+                  </div>
+                  <div
+                    id="description"
+                    className="text-[#c4c2c2] text-sm max-w-[350px] pl-12 pt-2 "
+                  >
+                    {data.description.slice(0, 250) + "..."}
+                  </div>
+                </div>
+                <div
+                  id="secTwo"
+                  className="h-[40%]  w-full  relative z-10"
+                >
+                  <div
+                    id="info"
+                    className="text-white max-w-[300px] flex flex-col gap-y-5 pl-5 pt-2"
+                  >
+                    <div
+                      id="epInfo"
+                      className=" h-full flex items-center justify-center border border-[#5a5858] px-4 gap-1 rounded-xl max-w-[100px]"
+                    >
+                      <FaRegPlayCircle className="h-3 w-3  text-[#96e1a9] " />
+                      {data.episodes.sub}
+                    </div>
+                    <div className="flex gap-x-4 text-sm">
+                      <span className="">
+                        <CiCircleInfo className="h-5 w-5 text-[#96e1a9] " />
+                      </span>
+                      {data.otherInfo.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div id="watchBtn" className="max-w-[300px] pl-5 mt-10">
+                    <Button
+                      variant="outline"
+                      className="w-full h-full bg-transparent text-white"
+                    >
+                      Watch
+                    </Button>
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
           ))}
@@ -55,7 +120,7 @@ function Carousel() {
   }
   return (
     <div className="w-full h-[500px] flex justify-center ">
-      <Skeleton className="w-[98%] h-[500px] bg-[#3b3a3a] flex items-center justify-center">
+      <Skeleton className="w-[98%] h-[600px] bg-[#3b3a3a] flex items-center justify-center">
         <ThreeDots
           visible={true}
           height="120"
