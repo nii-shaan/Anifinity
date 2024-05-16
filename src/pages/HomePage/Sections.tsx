@@ -4,6 +4,7 @@ import type { DataOfSections } from "@/store/types";
 import { useSelector } from "react-redux";
 import { CiSquareMore } from "react-icons/ci";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 function Sections() {
   const topAiringData: DataOfSections[] = useSelector(
@@ -42,7 +43,7 @@ function Sections() {
               {[...Array(6)].map((_, i) => (
                 <Skeleton
                   key={i}
-                  className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+                  className="w-72 h-40 min-w-[300px] bg-[#3b3a3a] "
                 />
               ))}
             </div>
@@ -50,8 +51,10 @@ function Sections() {
 
           <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
             <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
-              More. . .
-              <CiSquareMore className="h-5 w-5  " />
+              <Link to="/top-airing" className="flex">
+                More. . .
+                <CiSquareMore className="h-5 w-5  " />
+              </Link>
             </span>
           </div>
         </div>
@@ -79,15 +82,17 @@ function Sections() {
               {[...Array(6)].map((_, i) => (
                 <Skeleton
                   key={i}
-                  className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+                  className="w-72 h-40 min-w-[300px] bg-[#3b3a3a] "
                 />
               ))}
             </div>
           )}
           <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
             <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
-              More. . .
-              <CiSquareMore className="h-5 w-5  " />
+              <Link to="/most-popular" className="flex">
+                More. . .
+                <CiSquareMore className="h-5 w-5  " />
+              </Link>
             </span>
           </div>
         </div>
@@ -100,10 +105,7 @@ function Sections() {
             Most Favorite
           </div>
           {mostFavsData.length > 0 ? (
-            <ul
-              id="items"
-              className="w-full flex flex-col gap-8 items-center "
-            >
+            <ul id="items" className="w-full flex flex-col gap-8 items-center ">
               {mostFavsData.map((item: DataOfSections) => (
                 <li key={item.id} className="w-full flex justify-center">
                   <AnimeBlock data={item} />
@@ -111,19 +113,21 @@ function Sections() {
               ))}
             </ul>
           ) : (
-            <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
+            <div className=" w-full text-white flex flex-col gap-8 items-center">
               {[...Array(6)].map((_, i) => (
                 <Skeleton
                   key={i}
-                  className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+                  className="w-72 h-40 min-w-[300px] bg-[#3b3a3a] "
                 />
               ))}
             </div>
           )}
           <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
             <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
-              More. . .
-              <CiSquareMore className="h-5 w-5  " />
+              <Link to="/most-favorite" className="flex">
+                More. . .
+                <CiSquareMore className="h-5 w-5  " />
+              </Link>
             </span>
           </div>
         </div>

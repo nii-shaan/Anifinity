@@ -9,7 +9,7 @@ import {
   loadMostPopularData,
   loadLatestEpData,
   loadTopUpcommingData,
-} from "../store/index";
+} from "../../store/index";
 import LatestEps from "./LatestEps";
 import Sections from "./Sections";
 import TopUpcomming from "./TopUpcomming";
@@ -33,7 +33,9 @@ function Home() {
           .catch(() => {
             fetch("http://localhost:4000/anime/home")
               .then((res) => res.json())
-              .then((data) => dispatch(loadSpotlightData(data.spotlightAnimes)));
+              .then((data) =>
+                dispatch(loadSpotlightData(data.spotlightAnimes))
+              );
           });
       });
 

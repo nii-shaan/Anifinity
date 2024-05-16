@@ -4,6 +4,7 @@ import { RootState } from "@/store/Store";
 import AnimeBlock from "@/components/me/AnimeBlock";
 import { CiSquareMore } from "react-icons/ci";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 function LatestEps() {
   const latestEpsData: DataOfSections[] = useSelector(
@@ -24,7 +25,10 @@ function LatestEps() {
             className="mt-2 pb-5 flex flex-col flex-wrap justify-evenly gap-y-8 border-t pt-6 desktop:flex-row"
           >
             {latestEpsData.map((item: DataOfSections) => (
-              <li key={item.id} className="w-full flex justify-center desktop:w-auto">
+              <li
+                key={item.id}
+                className="w-full flex justify-center desktop:w-auto"
+              >
                 <AnimeBlock data={item} />
               </li>
             ))}
@@ -34,7 +38,7 @@ function LatestEps() {
             {[...Array(12)].map((_, i) => (
               <Skeleton
                 key={i}
-                className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+                className="w-72 h-40 min-w-[300px] bg-[#3b3a3a] "
               />
             ))}
           </div>
@@ -44,9 +48,11 @@ function LatestEps() {
           id="moreBtn"
           className=" h-12 flex items-center justify-start text-white cursor-pointer pb-1"
         >
-          <span className="ml-12 w-full flex items-center justify-center  gap-2 hover:text-[#968e8e] ">
-            More. . .
-            <CiSquareMore className="h-5 w-5  " />
+          <span className="ml-12 w-full flex items-center justify-center  gap-2  ">
+          <Link to="/latest-episodes" className="flex hover:text-[#968e8e]">
+              More. . .
+              <CiSquareMore className="h-5 w-5  " />
+              </Link>
           </span>
         </div>
       </div>

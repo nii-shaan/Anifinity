@@ -77,10 +77,7 @@ function Carousel() {
                     {data.description.slice(0, 250) + "..."}
                   </div>
                 </div>
-                <div
-                  id="secTwo"
-                  className="h-[40%]  w-full  relative z-10"
-                >
+                <div id="secTwo" className="h-[40%]  w-full  relative z-10">
                   <div
                     id="info"
                     className="text-white max-w-[300px] flex flex-col gap-y-5 pl-5 pt-2"
