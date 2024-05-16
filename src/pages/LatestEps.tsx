@@ -21,18 +21,21 @@ function LatestEps() {
         {latestEpsData.length > 0 ? (
           <ul
             id="items"
-            className="mt-2 pb-5 flex flex-wrap justify-evenly gap-y-8 border-t pt-6"
+            className="mt-2 pb-5 flex flex-col flex-wrap justify-evenly gap-y-8 border-t pt-6 desktop:flex-row"
           >
             {latestEpsData.map((item: DataOfSections) => (
-              <li key={item.id} className="">
+              <li key={item.id} className="w-full flex justify-center desktop:w-auto">
                 <AnimeBlock data={item} />
               </li>
             ))}
           </ul>
         ) : (
-          <div className="mt-2 pb-5 flex flex-wrap justify-evenly gap-y-8 border-t pt-6">
-            {[...Array(12)].map((_,i) => (
-              <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+          <div className="mt-2 pb-5 flex flex-wrap flex-col justify-evenly gap-y-8 border-t pt-6 desktop:flex-row">
+            {[...Array(12)].map((_, i) => (
+              <Skeleton
+                key={i}
+                className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+              />
             ))}
           </div>
         )}
@@ -41,7 +44,7 @@ function LatestEps() {
           id="moreBtn"
           className=" h-12 flex items-center justify-start text-white cursor-pointer pb-1"
         >
-          <span className="ml-12 flex items-center justify-center  gap-2 hover:text-[#968e8e] ">
+          <span className="ml-12 w-full flex items-center justify-center  gap-2 hover:text-[#968e8e] ">
             More. . .
             <CiSquareMore className="h-5 w-5  " />
           </span>

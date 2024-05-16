@@ -110,7 +110,7 @@ function Home() {
 
   return (
     <div className="bg-[#0f1010] w-full  ">
-      <div id="carouselSection" className="w-full min-h-[500px] h-[600px] ">
+      <div id="carouselSection" className="w-full  h-[600px] ">
         <Carousel />
       </div>
       <div className=" w-full h-[400px] mt-4 flex justify-center items-center">

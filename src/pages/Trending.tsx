@@ -33,14 +33,14 @@ function Trending() {
   }, []);
   return (
     <>
-      <div className="flex flex-col text-white">
+      <div className="flex flex-col text-white w-full items-center">
         <div className="w-[500px] flex justify-center text-3xl mb-2">
           Trending
         </div>
 
-        <div className="h-[200px]  w-[500px]">
+        <div className="h-[200px] w-[80%] desktop:w-[800px]">
           {data.length > 0 ? (
-            <div className="h-full w-full">
+            <div className="h-full w-full ">
               <Swiper
                 modules={[Autoplay, Pagination]}
                 autoplay={{
@@ -53,7 +53,7 @@ function Trending() {
                 direction="vertical"
                 className="h-full w-full"
               >
-                <div>
+                <div className="">
                   {data.map((item) => (
                     <SwiperSlide
                       key={item.id}
@@ -64,16 +64,16 @@ function Trending() {
                         style={{ backgroundImage: `url(${item.poster})` }}
                       ></div>
 
-                      <div className=" w-[380px] h-full">
-                        <div className="h-[150px] w-full  flex">
+                      <div className=" w-full h-full">
+                        <div className="h-[150px] w-full  flex ">
                           <div
-                            className={`h-full w-[75%] text-lg flex items-center p-4  ${
+                            className={`h-full w-[75%] text-lg flex items-center p-8  ${
                               item.name.length < 200 ? "text-sm" : ""
                             }`}
                           >
                             {item.name}
                           </div>
-                          <div className="h-full w-[20%]  flex  gap-1">
+                          <div className="h-full w-[20%]  bg-red-300 flex justify-end gap-1">
                             <FaArrowTrendUp className="h-7 w-7 mt-2 ml-1 text-[#96e1a9]" />{" "}
                             <span className="text-4xl">{item.rank}</span>
                           </div>

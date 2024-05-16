@@ -104,7 +104,7 @@ function AnimeBlock({ data }: AnimeBlockProps) {
           )}
         </HoverCardContent>
 
-        <div className="w-72 h-28 flex  justify-center gap-2 bg-[#222831] rounded-lg shadow p-2 overflow-hidden font-f1 text-white cursor-pointer min-w-[300px]  ">
+        <div className="w-[80%] h-40 flex  justify-center gap-2 bg-[#222831] rounded-lg shadow p-2 overflow-hidden font-f1 text-white cursor-pointer desktop:w-[300px] ">
           <div
             onMouseEnter={() => setTrackMouse((prev) => !prev)}
             className="flex gap-2 bg-neutral-500 w-20 h-5/5 shrink-0 rounded-lg bg-cover cursor-pointer"
@@ -112,12 +112,12 @@ function AnimeBlock({ data }: AnimeBlockProps) {
           ></div>
           <div className="flex w-full flex-col items-start justify-end">
             <HoverCardTrigger
-              className={`ml-1  hover:text-[#96e1a9]  ${
+              className={`ml-1 mb-6 hover:text-[#96e1a9]  ${
                 data.title.length < 20
-                  ? "mb-4"
-                  : data.title.length < 40
-                  ? "mb-2"
-                  : "mb-2 text-sm"
+                  ? "desktop:mb-12"
+                  : data.title.length < 60
+                  ? "desktop:mb-5"
+                  : "desktop:mb-3 desktop:text-sm"
               }`}
               onMouseEnter={() => setTrackMouse((prev) => !prev)}
             >

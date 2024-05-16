@@ -5,15 +5,15 @@ function NavBar() {
   // bg-[#1b1b1b]
   return (
     <header className="h-16  text-[#F2EFE9] flex justify-end sticky top-0 backdrop-blur-3xl  z-10 ">
-      <div className="h-full w-[70%] max-w-[1200px]  flex justify-between items-center">
+      <div className="h-full w-full   flex justify-between items-center">
         <div
           id="searchBar"
-          className=" text-[#F7F5FB] w-[50%] h-9  bg-[#00171F] flex items-center border-[#878787] border rounded-xl"
+          className=" text-[#F7F5FB] w-[50%] ml-10 h-9 bg-[#00171F] flex items-center border-[#878787] border rounded-xl"
         >
           <input
             type="text"
             placeholder="Search"
-            className="w-[90%] h-full outline-none rounded-l-xl text-center bg-transparent"
+            className="w-[90%]  h-full outline-none rounded-l-xl text-center bg-transparent"
           />
           <div className="w-[10%] h-full rounded-r-xl flex items-center justify-center hover:bg-[#3b3a3a] ">
             <FaSearch className="w-6 h-full  cursor-pointer text-[#878787]   " />

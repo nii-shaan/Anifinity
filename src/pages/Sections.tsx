@@ -20,8 +20,8 @@ function Sections() {
   // console.log(topAiringData);
   return (
     <div className="w-full h-full ">
-      <div className="w-full h-full flex justify-evenly ">
-        <div id="topAiringSection" className="h-[950px] w-[310px] ">
+      <div className="w-full h-full flex flex-col items-center desktop:flex-row ">
+        <div id="topAiringSection" className="min-h-[950px] w-full mb-10  ">
           <div
             id="sectionTitle"
             className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b border-[#565656] rounded-xl mb-5 py-6 text-white"
@@ -30,17 +30,20 @@ function Sections() {
           </div>
 
           {topAiringData.length > 0 ? (
-            <ul id="items" className="flex flex-col gap-8 items-center">
+            <ul id="items" className="w-full flex flex-col gap-y-8   ">
               {topAiringData.map((item: DataOfSections) => (
-                <li key={item.id} className="">
+                <li key={item.id} className="w-full  flex justify-center ">
                   <AnimeBlock data={item} />
                 </li>
               ))}
             </ul>
           ) : (
-            <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
-              {[...Array(6)].map((_,i) => (
-                <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+            <div className="   w-full text-white flex flex-col gap-8 items-center">
+              {[...Array(6)].map((_, i) => (
+                <Skeleton
+                  key={i}
+                  className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+                />
               ))}
             </div>
           )}
@@ -53,7 +56,7 @@ function Sections() {
           </div>
         </div>
 
-        <div id="mostPopular" className="h-[950px]  w-[310px]">
+        <div id="mostPopular" className="min-h-[950px] w-full mb-10">
           <div
             id="sectionTitle"
             className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b border-[#565656] rounded-xl mb-5 py-6 text-white"
@@ -61,17 +64,23 @@ function Sections() {
             Most Popular
           </div>
           {mostPopularData.length > 0 ? (
-            <ul id="items" className="flex flex-col gap-8 items-center">
+            <ul
+              id="items"
+              className=" w-full flex flex-col gap-8 items-center "
+            >
               {mostPopularData.map((item: DataOfSections) => (
-                <li key={item.id} className="">
+                <li key={item.id} className=" w-full flex justify-center">
                   <AnimeBlock data={item} />
                 </li>
               ))}
             </ul>
           ) : (
-            <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
-              {[...Array(6)].map((_,i) => (
-                <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+            <div className="  w-full text-white flex flex-col gap-8 items-center">
+              {[...Array(6)].map((_, i) => (
+                <Skeleton
+                  key={i}
+                  className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+                />
               ))}
             </div>
           )}
@@ -83,7 +92,7 @@ function Sections() {
           </div>
         </div>
 
-        <div id="mostFavs" className="h-[950px]  w-[320px]">
+        <div id="mostFavs" className="min-h-[950px] w-full mb-10">
           <div
             id="sectionTitle"
             className="h-10 text-3xl font-bold font-f1 flex items-center justify-center border-b border-[#565656] rounded-xl mb-5 py-6 text-white"
@@ -91,17 +100,23 @@ function Sections() {
             Most Favorite
           </div>
           {mostFavsData.length > 0 ? (
-            <ul id="items" className="flex flex-col gap-8 items-center">
+            <ul
+              id="items"
+              className="w-full flex flex-col gap-8 items-center "
+            >
               {mostFavsData.map((item: DataOfSections) => (
-                <li key={item.id} className="">
+                <li key={item.id} className="w-full flex justify-center">
                   <AnimeBlock data={item} />
                 </li>
               ))}
             </ul>
           ) : (
             <div className=" h-[835px]  w-full text-white flex flex-col gap-8 items-center">
-              {[...Array(6)].map((_,i) => (
-                <Skeleton key={i} className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] " />
+              {[...Array(6)].map((_, i) => (
+                <Skeleton
+                  key={i}
+                  className="w-72 h-28 min-w-[300px] bg-[#3b3a3a] "
+                />
               ))}
             </div>
           )}
