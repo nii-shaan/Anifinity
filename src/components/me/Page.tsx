@@ -1,10 +1,12 @@
 import GobackButton from "@/components/me/GobackButton";
 import { useEffect, useState } from "react";
 import AnimeBlock from "./AnimeBlock";
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 
 interface PagePropsType {
   url: string;
 }
+import { Button } from "../ui/button";
 
 export interface Datas {
   id: string;
@@ -32,6 +34,8 @@ function Page({ url }: PagePropsType) {
   //   console.log(currentPage);
   const [hasNextPage, setHasNextPage] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number | null>(null);
+//   console.log(totalPages);
+
   const [error, setError] = useState<string | null>(null);
 
   const [datas, setDatas] = useState<Datas[]>([]);
@@ -61,15 +65,18 @@ function Page({ url }: PagePropsType) {
     };
     fetchData();
   }, [currentPage]);
-  const handleNextPage = () => {
-    if (hasNextPage) {
-      setCurrentPage((prev) => prev + 1);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
-  const handlePreviousPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage((prev) => prev - 1);
+  const handleNextPage = () => {
+    if (totalPages !== null) {
+      if (hasNextPage && currentPage < totalPages) {
+        setCurrentPage((prev) => prev + 1);
+      }
     }
   };
 
@@ -88,12 +95,45 @@ function Page({ url }: PagePropsType) {
           </li>
         ))}
       </ul>
-      <button onClick={handlePreviousPage} className="text-white">
-        Previous Page
-      </button>
-      <button onClick={handleNextPage} className="text-white">
-        Next page
-      </button>
+
+      <div
+        id="paginateSec"
+        className="my-10 w-full flex justify-center   text-white"
+      >
+        <Button
+          variant="outline"
+          onClick={handlePreviousPage}
+          className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
+        >
+          {" "}
+          <IoIosArrowRoundBack className="h-6 w-6" />
+        </Button>
+
+        <div id="nums" className="  flex items-center ">
+          <span className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]">
+            {currentPage != 1 ? currentPage - 1 : null}
+          </span>
+          <span className="text-green-400 mx-7 text-2xl border px-3 rounded-full">
+            {currentPage}
+          </span>
+          <span className="cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]">
+            {currentPage != totalPages ? currentPage + 1 : null}
+          </span>
+          {totalPages == null ? null : currentPage !== totalPages &&
+            currentPage < totalPages - 2 ? (
+            <span className="ml-2 cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]">
+              {totalPages != null ? totalPages : null}
+            </span>
+          ) : null}
+        </div>
+        <Button
+          variant="outline"
+          onClick={handleNextPage}
+          className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
+        >
+          <IoIosArrowRoundForward className="h-6 w-6" />
+        </Button>
+      </div>
     </div>
   );
 }
