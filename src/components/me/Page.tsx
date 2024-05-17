@@ -110,6 +110,15 @@ function Page({ url }: PagePropsType) {
         </Button>
 
         <div id="nums" className="  flex items-center ">
+          {totalPages == null ? null : currentPage == totalPages ||
+            currentPage > Math.floor(totalPages / 2) ? (
+            <span className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]" onClick={()=>{
+                setCurrentPage(1)
+            }}>
+              1 . . .
+            </span>
+          ) : null}
+
           <span
             className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]"
             onClick={() => {
@@ -118,7 +127,7 @@ function Page({ url }: PagePropsType) {
           >
             {currentPage != 1 ? currentPage - 1 : null}
           </span>
-          <span className="text-green-400 mx-7 text-2xl border px-3 rounded-full">
+          <span className="text-green-400 mx-2 text-2xl border px-3 rounded-full">
             {currentPage}
           </span>
           <span
@@ -137,7 +146,7 @@ function Page({ url }: PagePropsType) {
                 setCurrentPage(totalPages);
               }}
             >
-              {totalPages != null ? totalPages : null}
+              . . . {totalPages != null ? totalPages : null}
             </span>
           ) : null}
         </div>
