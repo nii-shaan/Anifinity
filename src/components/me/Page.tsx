@@ -34,7 +34,7 @@ function Page({ url }: PagePropsType) {
   //   console.log(currentPage);
   const [hasNextPage, setHasNextPage] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number | null>(null);
-//   console.log(totalPages);
+  //   console.log(totalPages);
 
   const [error, setError] = useState<string | null>(null);
 
@@ -110,18 +110,33 @@ function Page({ url }: PagePropsType) {
         </Button>
 
         <div id="nums" className="  flex items-center ">
-          <span className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]">
+          <span
+            className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]"
+            onClick={() => {
+              setCurrentPage(currentPage - 1);
+            }}
+          >
             {currentPage != 1 ? currentPage - 1 : null}
           </span>
           <span className="text-green-400 mx-7 text-2xl border px-3 rounded-full">
             {currentPage}
           </span>
-          <span className="cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]">
+          <span
+            className="cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]"
+            onClick={() => {
+              setCurrentPage(currentPage + 1);
+            }}
+          >
             {currentPage != totalPages ? currentPage + 1 : null}
           </span>
           {totalPages == null ? null : currentPage !== totalPages &&
             currentPage < totalPages - 2 ? (
-            <span className="ml-2 cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]">
+            <span
+              className="ml-2 cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]"
+              onClick={() => {
+                setCurrentPage(totalPages);
+              }}
+            >
               {totalPages != null ? totalPages : null}
             </span>
           ) : null}
