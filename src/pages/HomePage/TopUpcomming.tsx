@@ -49,7 +49,7 @@ function TopUpcomming() {
           className=" h-12 flex items-center justify-start text-white cursor-pointer pb-1"
         >
           <span className=" w-full ml-12 flex items-center justify-center  gap-2 ">
-            <Link to="/top-upcomming" className="flex hover:text-[#968e8e] ">
+            <Link to="/top-upcoming" className="flex hover:text-[#968e8e] ">
             More. . .
             <CiSquareMore className="h-5 w-5  " />
             </Link>

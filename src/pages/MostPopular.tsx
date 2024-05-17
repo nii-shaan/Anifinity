@@ -1,4 +1,3 @@
-import GobackButton from "@/components/me/GobackButton";
 import Page from "@/components/me/Page";
 
 function MostPopular() {

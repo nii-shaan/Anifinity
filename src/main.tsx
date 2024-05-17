@@ -23,7 +23,7 @@ const router = createBrowserRouter(
       <Route path="/most-popular" element={<MostPopular />} />
       <Route path="/most-favorite" element={<MostFavorite />} />
       <Route path="/latest-episodes" element={<LatestEpisodes />} />
-      <Route path="/top-upcomming" element={<TopUpcomming />} />
+      <Route path="/top-upcoming" element={<TopUpcomming />} />
     </Route>
   )
 );
