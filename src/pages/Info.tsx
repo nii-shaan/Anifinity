@@ -138,7 +138,7 @@ function Info() {
             )}
           </div>
         </div>
-        <div id="infos">
+        <div id="infos" className="my-5 desktop:flex desktop:gap-x-10">
           <div>Total Episodes: {data?.totalEpisodes}</div>
           <div>Sub: {data?.hasSub ? "Yes" : "No"}</div>
           <div>Dub: {data?.hasDub ? "Yes" : "No"}</div>
@@ -150,7 +150,7 @@ function Info() {
         <div id="watch">
           <Button
             variant="outline"
-            className="w-full h-full bg-transparent px-28 py-2 flex justify-center items-center"
+            className="w-full h-full bg-transparent px-28 py-2 flex justify-center items-center hover:border-[#000]"
           >
             <Link to={`/`} className="flex items-center">
               Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
