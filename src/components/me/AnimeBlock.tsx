@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/hover-card";
 import { MdOutlineSlideshow } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface AnimeBlockProps {
   data: DataOfSections;
@@ -96,7 +97,9 @@ function AnimeBlock({ data }: AnimeBlockProps) {
                   variant="outline"
                   className="w-full h-full bg-transparent"
                 >
-                  Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
+                  <Link to={`/info/${data.id}`} className="flex items-center">
+                    Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -122,7 +125,9 @@ function AnimeBlock({ data }: AnimeBlockProps) {
               }`}
               onMouseEnter={() => setTrackMouse((prev) => !prev)}
             >
-              <span id="title">{data.title}</span>
+              <span id="title">
+                <Link to={`/info/${data.id}`}> {data.title} </Link>
+              </span>
             </HoverCardTrigger>
             <div className="h-6 w-full  flex justify-between">
               <div
