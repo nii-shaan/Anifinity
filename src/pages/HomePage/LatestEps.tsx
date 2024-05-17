@@ -10,7 +10,7 @@ function LatestEps() {
   const latestEpsData: DataOfSections[] = useSelector(
     (state: RootState) => state.latestEp.data
   );
-  console.log(latestEpsData);
+  // console.log(latestEpsData);
 
   return (
     <>

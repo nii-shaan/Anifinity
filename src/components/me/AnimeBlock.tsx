@@ -35,13 +35,14 @@ interface HoverData {
 
 function AnimeBlock({ data }: AnimeBlockProps) {
   const [hoverData, setHoverData] = useState<HoverData | null>(null);
-
   const [trackMouse, setTrackMouse] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:3000/anime/zoro/info?id=${data.id}`)
       .then((res) => res.json())
-      .then((data) => setHoverData(data));
+      .then((info) => {
+        setHoverData(info);
+      });
   }, [trackMouse]);
 
   return (

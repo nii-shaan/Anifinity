@@ -1,13 +1,5 @@
-import GobackButton from "@/components/me/GobackButton";
-
+import Page from "@/components/me/Page";
 function TopUpcomming() {
-  return (
-    <div id="main" className="w-full">
-      <div id="gobackButton" className="w-full">
-        <GobackButton />
-      </div>
-    </div>
-  );
+  return <Page url="http://localhost:3000/anime/zoro/top-upcoming" />;
 }
-
 export default TopUpcomming;

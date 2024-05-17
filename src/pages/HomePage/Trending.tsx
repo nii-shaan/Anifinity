@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 function Trending() {
   const dispatch = useDispatch();
   const data = useSelector((state: RootState) => state.trending.data);
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     fetch("http://localhost:4000/anime/home")

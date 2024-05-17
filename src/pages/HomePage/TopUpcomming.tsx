@@ -10,7 +10,7 @@ function TopUpcomming() {
   const topUpcommingData: DataOfSections[] = useSelector(
     (state: RootState) => state.topUpcomming.data
   );
-  console.log(topUpcommingData);
+  // console.log(topUpcommingData);
 
   return (
     <>

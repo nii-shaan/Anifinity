@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 
 function Carousel() {
   const { loaded, data } = useSelector((state: RootState) => state.spotlight);
-  console.log(data);
+  // console.log(data);
 
   if (loaded) {
     return (

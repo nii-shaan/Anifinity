@@ -1,13 +1,7 @@
-import GobackButton from '@/components/me/GobackButton'
+import Page from "@/components/me/Page";
 
 function MostFavorite() {
-  return (
-    <div id="main" className="w-full">
-      <div id="gobackButton" className="w-full">
-        <GobackButton />
-      </div>
-    </div>
-  )
+  return <Page url="http://localhost:3000/anime/zoro/most-favorite" />;
 }
 
-export default MostFavorite
+export default MostFavorite;
