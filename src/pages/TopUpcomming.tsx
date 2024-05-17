@@ -1,9 +1,13 @@
-import React from 'react'
+import GobackButton from "@/components/me/GobackButton";
 
 function TopUpcomming() {
   return (
-    <div>TopUpcomming</div>
-  )
+    <div id="main" className="w-full">
+      <div id="gobackButton" className="w-full">
+        <GobackButton />
+      </div>
+    </div>
+  );
 }
 
-export default TopUpcomming
+export default TopUpcomming;

@@ -1,8 +1,12 @@
-import React from 'react'
+import GobackButton from '@/components/me/GobackButton'
 
 function LatestEpisodes() {
   return (
-    <div>LatestsEpisodes</div>
+    <div id="main" className="w-full">
+      <div id="gobackButton" className="w-full">
+        <GobackButton />
+      </div>
+    </div>
   )
 }
 
