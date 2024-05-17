@@ -2,6 +2,7 @@ import GobackButton from "@/components/me/GobackButton";
 import { useEffect, useState } from "react";
 import AnimeBlock from "./AnimeBlock";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+import { Skeleton } from "../ui/skeleton";
 
 interface PagePropsType {
   url: string;
@@ -35,10 +36,8 @@ function Page({ url }: PagePropsType) {
   const [hasNextPage, setHasNextPage] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number | null>(null);
   //   console.log(totalPages);
-
-  const [error, setError] = useState<string | null>(null);
-
   const [datas, setDatas] = useState<Datas[]>([]);
+  const [loaded, setLoaded] = useState<boolean>(false);
   //   console.log(datas);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ function Page({ url }: PagePropsType) {
         setHasNextPage(data.hasNextPage);
         setDatas(data.results);
         setTotalPages(data.totalPages);
-        setError(null);
+        setLoaded(true);
       } catch (err) {
         console.log("error:", err);
         if (retryCount > 0) {
@@ -68,6 +67,7 @@ function Page({ url }: PagePropsType) {
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
+      setLoaded(false);
       setCurrentPage((prev) => prev - 1);
     }
   };
@@ -75,91 +75,117 @@ function Page({ url }: PagePropsType) {
   const handleNextPage = () => {
     if (totalPages !== null) {
       if (hasNextPage && currentPage < totalPages) {
+        setLoaded(false);
         setCurrentPage((prev) => prev + 1);
       }
     }
   };
 
-  return (
-    <div id="main" className="w-full">
-      <div id="gobackButton" className="w-full my-4">
-        <GobackButton />
-      </div>
-      <ul className="pt-8 w-full flex flex-col items-center desktop:flex-row desktop:flex-wrap gap-8 desktop:justify-center">
-        {datas.map((item) => (
-          <li
-            key={item.id}
-            className="w-full flex justify-center desktop:w-auto"
-          >
-            <AnimeBlock data={item} />
-          </li>
-        ))}
-      </ul>
+  if (loaded) {
+    return (
+      <div id="main" className="w-full">
+        <div id="gobackButton" className="w-full my-4">
+          <GobackButton />
+        </div>
+        <ul className="pt-8 w-full flex flex-col items-center desktop:flex-row desktop:flex-wrap gap-8 desktop:justify-center">
+          {datas.map((item) => (
+            <li
+              key={item.id}
+              className="w-full flex justify-center desktop:w-auto"
+            >
+              <AnimeBlock data={item} />
+            </li>
+          ))}
+        </ul>
 
-      <div
-        id="paginateSec"
-        className="my-10 w-full flex justify-center   text-white"
-      >
-        <Button
-          variant="outline"
-          onClick={handlePreviousPage}
-          className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
+        <div
+          id="paginateSec"
+          className="my-10 w-full flex justify-center   text-white"
         >
-          {" "}
-          <IoIosArrowRoundBack className="h-6 w-6" />
-        </Button>
-
-        <div id="nums" className="  flex items-center ">
-          {totalPages == null ? null : currentPage == totalPages ||
-            currentPage > Math.floor(totalPages / 2) ? (
-            <span className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]" onClick={()=>{
-                setCurrentPage(1)
-            }}>
-              1 . . .
-            </span>
-          ) : null}
-
-          <span
-            className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]"
-            onClick={() => {
-              setCurrentPage(currentPage - 1);
-            }}
+          <Button
+            variant="outline"
+            onClick={handlePreviousPage}
+            className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
           >
-            {currentPage != 1 ? currentPage - 1 : null}
-          </span>
-          <span className="text-green-400 mx-2 text-2xl border px-3 rounded-full">
-            {currentPage}
-          </span>
-          <span
-            className="cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]"
-            onClick={() => {
-              setCurrentPage(currentPage + 1);
-            }}
-          >
-            {currentPage != totalPages ? currentPage + 1 : null}
-          </span>
-          {totalPages == null ? null : currentPage !== totalPages &&
-            currentPage < totalPages - 2 ? (
+            {" "}
+            <IoIosArrowRoundBack className="h-6 w-6" />
+          </Button>
+
+          <div id="nums" className="  flex items-center ">
+            {totalPages == null ? null : currentPage == totalPages ||
+              currentPage > Math.floor(totalPages / 2) ? (
+              <span
+                className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]"
+                onClick={() => {
+                  setLoaded(false);
+                  setCurrentPage(1);
+                }}
+              >
+                1 . . .
+              </span>
+            ) : null}
+
             <span
-              className="ml-2 cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]"
+              className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]"
               onClick={() => {
-                setCurrentPage(totalPages);
+                setLoaded(false);
+                setCurrentPage(currentPage - 1);
               }}
             >
-              . . . {totalPages != null ? totalPages : null}
+              {currentPage != 1 ? currentPage - 1 : null}
             </span>
-          ) : null}
+            <span className="text-green-400 mx-2 text-2xl border px-3 rounded-full">
+              {currentPage}
+            </span>
+            <span
+              className="cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]"
+              onClick={() => {
+                setLoaded(false);
+                setCurrentPage(currentPage + 1);
+              }}
+            >
+              {currentPage != totalPages ? currentPage + 1 : null}
+            </span>
+            {totalPages == null ? null : currentPage !== totalPages &&
+              currentPage < totalPages - 2 ? (
+              <span
+                className="ml-2 cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]"
+                onClick={() => {
+                  setLoaded(false);
+                  setCurrentPage(totalPages);
+                }}
+              >
+                . . . {totalPages != null ? totalPages : null}
+              </span>
+            ) : null}
+          </div>
+          <Button
+            variant="outline"
+            onClick={handleNextPage}
+            className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
+          >
+            <IoIosArrowRoundForward className="h-6 w-6" />
+          </Button>
         </div>
-        <Button
-          variant="outline"
-          onClick={handleNextPage}
-          className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
-        >
-          <IoIosArrowRoundForward className="h-6 w-6" />
-        </Button>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="w-full">
+        <div id="gobackButton" className="w-full my-4">
+          <GobackButton />
+        </div>
+        <div className="pt-8 w-full flex flex-col items-center desktop:flex-row desktop:flex-wrap gap-8 desktop:justify-center">
+          {[...Array(20)].map((_, i) => (
+            <Skeleton
+              key={i}
+              className="w-[80%] h-40 flex  justify-center gap-2 bg-[#3b3a3a] rounded-lg shadow p-2 overflow-hidden font-f1 text-white cursor-pointer desktop:w-[300px] "
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Page;
