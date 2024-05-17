@@ -41,6 +41,7 @@ function Page({ url }: PagePropsType) {
   //   console.log(datas);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchData = async (retryCount: number = 5) => {
       try {
         const response = await fetch(`${url}?page=${currentPage}`);
