@@ -22,7 +22,7 @@ function Watch() {
     itemsPerOption: number
   ): string[] => {
     const ranges: string[] = [];
-    for (let i = 1; i < totalItems; i += itemsPerOption) {
+    for (let i = 1; i <= totalItems; i += itemsPerOption) {
       ranges.push(`${i}-${Math.min(i + itemsPerOption - 1, totalItems)}`);
     }
     return ranges;
@@ -31,13 +31,15 @@ function Watch() {
   const { slug } = useParams<{ slug: string }>();
   const [episodes, setEpisodes] = useState<Episodes[]>([]);
   const RangeOptions = generateRanges(episodes.length, 100);
-  const [selectedOption, setSelectedOption] = useState<string>(
-    RangeOptions[0] || ""
-  );
+  const [selectedOption, setSelectedOption] = useState<string>("");
   const [dividedEps, setDividedEps] = useState<Episodes[] | []>([]);
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value);
+    setCurrentEp(dividedEps[0]);
   };
+
+  const [currentEp, setCurrentEp] = useState<Episodes | null>(null);
+  console.log(currentEp);
 
   useEffect(() => {
     fetch(`http://localhost:3000/anime/zoro/info?id=${slug}`)
@@ -54,8 +56,9 @@ function Watch() {
       const [start, end] = selectedOption.split("-").map(Number);
       const Eps = episodes.slice(start - 1, end);
       setDividedEps(Eps);
+      setCurrentEp(Eps[0]);
     }
-  }, [selectedOption]);
+  }, [selectedOption, episodes]);
 
   return (
     <div
@@ -63,7 +66,7 @@ function Watch() {
       className="text-white mt-10 w-full flex flex-col items-center"
     >
       <div id="video" className="w-[80%] h-72 bg-red-400"></div>
-      <div id="animeTitle"></div>
+      <div id="animeTitle">{currentEp ? currentEp.title : "Loading"}</div>
 
       <div id="epsInfos" className="w-full flex flex-col mt-10 gap-2">
         <div id="range" className="ml-[2%]">
@@ -86,13 +89,16 @@ function Watch() {
           id="epBoxs"
           className="w-[95%] flex flex-wrap border justify-start ml-[2%] gap-2 p-2 desktop:max-w-[1500px]"
         >
-          {dividedEps.map((episode) => (
+          {dividedEps.map((episode, i) => (
             <Button
               variant={"ghost"}
               key={episode.id}
               className={` w-10 border hover:bg-[#919191] ${
                 episode.isFiller ? "bg-[#702727]" : ""
-              }`}
+              } ${episode.id == currentEp?.id ? "bg-green-300 " : ""}`}
+              onClick={() => {
+                setCurrentEp(dividedEps[i]);
+              }}
             >
               {episode.number}
             </Button>
