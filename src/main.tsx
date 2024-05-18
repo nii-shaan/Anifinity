@@ -16,6 +16,7 @@ import MostFavorite from "./pages/MostFavorite.tsx";
 import LatestEpisodes from "./pages/LatestEpisodes.tsx";
 import TopUpcomming from "./pages/TopUpcomming.tsx";
 import Info from "./pages/Info.tsx";
+import Watch from "./pages/Watch.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -25,7 +26,8 @@ const router = createBrowserRouter(
       <Route path="/most-favorite" element={<MostFavorite />} />
       <Route path="/latest-episodes" element={<LatestEpisodes />} />
       <Route path="/top-upcoming" element={<TopUpcomming />} />
-      <Route path="/info/:slug" element={<Info/>}/>
+      <Route path="/info/:slug" element={<Info />} />
+      <Route path="/watch/:slug" element={<Watch />} />
     </Route>
   )
 );

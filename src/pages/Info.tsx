@@ -183,7 +183,7 @@ function Info() {
             variant="outline"
             className="max-w-40 h-full bg-transparent mx-auto p-36  py-2 flex  hover:border-[#000]"
           >
-            <Link to={`/`} className="flex ">
+            <Link to={`/watch/${data?.id}`} className="flex ">
               Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
             </Link>
           </Button>
