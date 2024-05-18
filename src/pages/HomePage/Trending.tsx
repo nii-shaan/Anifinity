@@ -10,6 +10,7 @@ import { loadTrendingData } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/store/Store";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 function Trending() {
   const dispatch = useDispatch();
@@ -73,7 +74,7 @@ function Trending() {
                           >
                             {item.name}
                           </div>
-                          <div className="h-full w-[20%]  bg-red-300 flex justify-end gap-1">
+                          <div className="h-full w-[20%]   flex justify-end gap-1">
                             <FaArrowTrendUp className="h-7 w-7 mt-2 ml-1 text-[#96e1a9]" />{" "}
                             <span className="text-4xl">{item.rank}</span>
                           </div>
@@ -83,8 +84,13 @@ function Trending() {
                             variant="outline"
                             className="w-full h-full bg-transparent"
                           >
-                            Watch{" "}
-                            <MdOutlineSlideshow className="h-6 w-6 ml-2 " />
+                            <Link
+                              className=" w-full flex items-center justify-center"
+                              to={`/info/${item.id}`}
+                            >
+                              Watch{" "}
+                              <MdOutlineSlideshow className="h-6 w-6 ml-2 " />
+                            </Link>
                           </Button>
                         </div>
                       </div>

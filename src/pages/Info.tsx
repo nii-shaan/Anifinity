@@ -87,7 +87,7 @@ function Info() {
   return (
     <div id="container" className="text-white">
       <GobackButton />
-      <div className="flex flex-col  mt-8">
+      <div className="flex flex-col items-center  mt-8">
         {data ? (
           <div
             id="poster"
@@ -101,7 +101,7 @@ function Info() {
         {data ? (
           <div
             id="title"
-            className={`w-[70%] mt-5 mx-auto ${
+            className={`w-[70%] mt-5 flex justify-center  ${
               data == undefined
                 ? ""
                 : data?.title.length < 20

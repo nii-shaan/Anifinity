@@ -13,6 +13,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { CiCircleInfo } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 function Carousel() {
   const { loaded, data } = useSelector((state: RootState) => state.spotlight);
@@ -103,7 +104,9 @@ function Carousel() {
                       variant="outline"
                       className="w-full h-full bg-transparent text-white"
                     >
+                      <Link to={`/info/${data.id}`}>
                       Watch
+                      </Link>
                     </Button>
                   </div>
                 </div>
