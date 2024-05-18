@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineSlideshow } from "react-icons/md";
 import { Skeleton } from "@/components/ui/skeleton";
 import GobackButton from "@/components/me/GobackButton";
+import AnimeBlock from "@/components/me/AnimeBlock";
 
 interface DataTypes {
   id: string;
@@ -188,7 +189,32 @@ function Info() {
           </Button>
         </div>
       </div>
-      <div className="w-full h-[500px] bg-red-400"></div>
+      <div id="recommendations" className="w-full mt-10 ">
+        <div id="heading" className="text-2xl  pl-5 border-b">
+          Recommended for you
+        </div>
+        {data ? (
+          <ul className="flex flex-col items-center gap-y-5 pt-5 desktop:flex-row desktop:flex-wrap desktop:gap-5 desktop:justify-center">
+            {data?.recommendations.map((item) => (
+              <li
+                key={item.id}
+                className="w-full flex justify-center desktop:w-auto"
+              >
+                <AnimeBlock data={item} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="flex flex-col items-center gap-y-5 pt-5 desktop:flex-row desktop:flex-wrap desktop:gap-5 desktop:justify-center">
+            {[...Array(20)].map((_, i) => (
+              <Skeleton
+                key={i}
+                className="w-[80%] h-40   bg-[#3b3a3a] rounded-lg   desktop:w-[300px]"
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
