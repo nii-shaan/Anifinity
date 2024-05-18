@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Episodes {
   id: string;
@@ -66,7 +67,15 @@ function Watch() {
       className="text-white mt-10 w-full flex flex-col items-center"
     >
       <div id="video" className="w-[80%] h-72 bg-red-400"></div>
-      <div id="animeTitle">{currentEp ? currentEp.title : "Loading"}</div>
+      <div id="animeTitle" className="mt-6 px-2">
+        {currentEp ? (
+          <>
+            <span className="text-green-400">{currentEp.title}</span>
+          </>
+        ) : (
+          <Skeleton className="h-8 w-64 bg-[#3b3a3a] " />
+        )}
+      </div>
 
       <div id="epsInfos" className="w-full flex flex-col mt-10 gap-2">
         <div id="range" className="ml-[2%]">
@@ -85,25 +94,33 @@ function Watch() {
             ))}
           </select>
         </div>
-        <div
-          id="epBoxs"
-          className="w-[95%] flex flex-wrap border justify-start ml-[2%] gap-2 p-2 desktop:max-w-[1500px]"
-        >
-          {dividedEps.map((episode, i) => (
-            <Button
-              variant={"ghost"}
-              key={episode.id}
-              className={` w-10 border hover:bg-[#919191] ${
-                episode.isFiller ? "bg-[#702727]" : ""
-              } ${episode.id == currentEp?.id ? "bg-green-300 " : ""}`}
-              onClick={() => {
-                setCurrentEp(dividedEps[i]);
-              }}
-            >
-              {episode.number}
-            </Button>
-          ))}
-        </div>
+        {dividedEps.length > 0 ? (
+          <div
+            id="epBoxs"
+            className="w-[95%] flex flex-wrap border border-[#3d3b3b] justify-start ml-[2%] gap-2 p-5 desktop:max-w-[1500px]"
+          >
+            {dividedEps.map((episode, i) => (
+              <Button
+                variant={"ghost"}
+                key={episode.id}
+                className={` w-10 border hover:bg-[#919191] ${
+                  episode.isFiller ? "bg-[#702727]" : ""
+                } ${episode.id == currentEp?.id ? "bg-green-300 " : ""}`}
+                onClick={() => {
+                  setCurrentEp(dividedEps[i]);
+                }}
+              >
+                {episode.number}
+              </Button>
+            ))}
+          </div>
+        ) : (
+          <div className="w-[95%] flex flex-wrap border border-[#3d3b3b] justify-start ml-[2%] gap-2 p-5 desktop:max-w-[1500px]">
+            {[...Array(40)].map((_,i)=>(
+                <Skeleton className=" w-10 h-10 bg-[#3b3a3a]"/>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
