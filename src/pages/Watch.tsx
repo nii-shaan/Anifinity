@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import "@vidstack/react/player/styles/default/theme.css";
+import "@vidstack/react/player/styles/default/layouts/video.css";
+import { MediaPlayer, MediaProvider } from "@vidstack/react";
+import {
+  defaultLayoutIcons,
+  DefaultVideoLayout,
+} from "@vidstack/react/player/layouts/default";
 
 interface Episodes {
   id: string;
@@ -9,6 +16,12 @@ interface Episodes {
   title: string;
   isFiller: boolean;
   url: string;
+}
+interface WatchData {
+  sources: { url: string; type: string; isM3U8: boolean }[];
+  subtitles: { url: string; lang: string }[];
+  intro: { start: number; end: number };
+  outro: { start: number; end: number };
 }
 
 function Watch() {
@@ -38,9 +51,12 @@ function Watch() {
     setSelectedOption(e.target.value);
     setCurrentEp(dividedEps[0]);
   };
+  const [watchData, setWatchData] = useState<WatchData | null>(null);
+  console.log(watchData);
 
   const [currentEp, setCurrentEp] = useState<Episodes | null>(null);
-  console.log(currentEp);
+
+
 
   useEffect(() => {
     fetch(`http://localhost:3000/anime/zoro/info?id=${slug}`)
@@ -61,12 +77,33 @@ function Watch() {
     }
   }, [selectedOption, episodes]);
 
+  useEffect(() => {
+    if (currentEp) {
+      fetch(`http://localhost:3000/anime/zoro/watch?episodeId=${currentEp.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setWatchData(data);
+        });
+    }
+  }, [currentEp]);
+
+
+
   return (
     <div
       id="container"
       className="text-white mt-10 w-full flex flex-col items-center"
     >
-      <div id="video" className="w-[80%] h-72 bg-red-400"></div>
+      <div id="video" className="w-[85%] ">
+        <MediaPlayer title="Sprite Fight" src={`http://localhost:3001/proxy?url=${encodeURIComponent(watchData?.sources[0]?.url || '')}`}
+>
+          <MediaProvider />
+          <DefaultVideoLayout
+            thumbnails="https://files.vidstack.io/sprite-fight/thumbnails.vtt"
+            icons={defaultLayoutIcons}
+          />
+        </MediaPlayer>
+      </div>
       <div id="animeTitle" className="mt-6 px-2">
         {currentEp ? (
           <>
@@ -116,8 +153,8 @@ function Watch() {
           </div>
         ) : (
           <div className="w-[95%] flex flex-wrap border border-[#3d3b3b] justify-start ml-[2%] gap-2 p-5 desktop:max-w-[1500px]">
-            {[...Array(40)].map((_,i)=>(
-                <Skeleton className=" w-10 h-10 bg-[#3b3a3a]"/>
+            {[...Array(40)].map((_, i) => (
+              <Skeleton key={i} className=" w-10 h-10 bg-[#3b3a3a]" />
             ))}
           </div>
         )}

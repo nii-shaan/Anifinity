@@ -93,14 +93,14 @@ function AnimeBlock({ data }: AnimeBlockProps) {
                 </div>
               </div>
               <div id="epInfoAndWatch" className="h-[15%] w-full">
+                <Link to={`/info/${data.id}`} className="flex items-center">
                 <Button
                   variant="outline"
                   className="w-full h-full bg-transparent"
                 >
-                  <Link to={`/info/${data.id}`} className="flex items-center">
                     Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
-                  </Link>
                 </Button>
+                  </Link>
               </div>
             </div>
           ) : (
