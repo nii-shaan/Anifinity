@@ -14,6 +14,7 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import { CiCircleInfo } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { MdOutlineSlideshow } from "react-icons/md";
 
 function Carousel() {
   const { loaded, data } = useSelector((state: RootState) => state.spotlight);
@@ -100,14 +101,14 @@ function Carousel() {
                     </div>
                   </div>
                   <div id="watchBtn" className="max-w-[300px] pl-5 mt-10">
-                    <Button
-                      variant="outline"
-                      className="w-full h-full bg-transparent text-white"
-                    >
-                      <Link to={`/info/${data.id}`}>
-                      Watch
-                      </Link>
-                    </Button>
+                    <Link to={`/info/${data.id}`}>
+                      <Button
+                        variant="outline"
+                        className="w-full h-full bg-transparent text-white"
+                      >
+                        Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
