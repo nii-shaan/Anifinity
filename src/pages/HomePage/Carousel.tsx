@@ -28,7 +28,7 @@ function Carousel() {
           keyboard={true}
           modules={[Navigation, Scrollbar, Autoplay, Keyboard]}
           autoplay={{
-            delay: 4500,
+            delay: 4000,
           }}
           scrollbar={{
             hide: false,

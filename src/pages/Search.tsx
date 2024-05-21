@@ -18,7 +18,8 @@ function Search() {
 
   return (
     <>
-      <div className="my-5">
+      {window.scrollTo(0, 0)}
+      <div className="py-5 bg-[#0f1010] min-h-[600px]">
         <div id="text" className="text-white text-xl desktop:text-2xl">
           {" "}
           Showing results for: <span className="text-[#96e1a9]">{slug}</span>
@@ -27,14 +28,16 @@ function Search() {
           id="results"
           className=" mt-10 flex flex-col gap-8 desktop:flex-row desktop:flex-wrap desktop:justify-center"
         >
-          {results.map((item) => (
-            <li
-              key={item.id}
-              className="w-full flex justify-center desktop:w-auto"
-            >
-              <AnimeBlock data={item} />
-            </li>
-          ))}
+          {results!
+            ? results.map((item) => (
+                <li
+                  key={item.id}
+                  className="w-full flex justify-center desktop:w-auto"
+                >
+                  <AnimeBlock data={item} />
+                </li>
+              ))
+            : ""}
         </ul>
       </div>
     </>

@@ -84,8 +84,8 @@ function Page({ url }: PagePropsType) {
 
   if (loaded) {
     return (
-      <div id="main" className="w-full">
-        <div id="gobackButton" className="w-full my-4">
+      <div id="main" className="w-full bg-[#0f1010]">
+        <div id="gobackButton" className="w-full py-4">
           <GobackButton />
         </div>
         <ul className="pt-8 w-full flex flex-col items-center desktop:flex-row desktop:flex-wrap gap-8 desktop:justify-center">
@@ -172,8 +172,8 @@ function Page({ url }: PagePropsType) {
     );
   } else {
     return (
-      <div className="w-full">
-        <div id="gobackButton" className="w-full my-4">
+      <div className="w-full bg-[#0f1010]">
+        <div id="gobackButton" className="w-full py-4">
           <GobackButton />
         </div>
         <div className="pt-8 w-full flex flex-col items-center desktop:flex-row desktop:flex-wrap gap-8 desktop:justify-center">

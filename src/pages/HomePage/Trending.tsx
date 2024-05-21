@@ -34,7 +34,7 @@ function Trending() {
   }, []);
   return (
     <>
-      <div className="flex flex-col text-white w-full items-center">
+      <div className="flex flex-col text-white w-full items-center ">
         <div className="w-[500px] flex justify-center text-3xl mb-2">
           Trending
         </div>

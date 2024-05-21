@@ -86,7 +86,7 @@ function Info() {
   }, [slug]);
 
   return (
-    <div id="container" className="text-white">
+    <div id="container" className="text-white bg-[#0f1010] py-10">
       <GobackButton />
       <div className="flex flex-col items-center  mt-8">
         {data ? (
@@ -179,14 +179,17 @@ function Info() {
           </div>
         )}
         <div id="watch">
-          <Button
-            variant="outline"
-            className="max-w-40 h-full bg-transparent mx-auto p-36  py-2 flex  hover:border-[#000]"
-          >
-            <Link to={`/watch/${data?.id}`} className="flex ">
-              Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
-            </Link>
-          </Button>
+          <Link to={`/watch/${data?.id}`} className=" ">
+            <Button
+              disabled={!data}
+              variant="outline"
+              className="max-w-40 h-full bg-transparent mx-auto p-36  py-2 flex  hover:border-[#000]"
+            >
+              <span className="flex items-center">
+                Watch <MdOutlineSlideshow className="h-6 w-6 ml-2 " />
+              </span>
+            </Button>
+          </Link>
         </div>
       </div>
       <div id="recommendations" className="w-full mt-10 ">
@@ -195,7 +198,7 @@ function Info() {
         </div>
         {data ? (
           <ul className="flex flex-col items-center gap-y-5 pt-5 desktop:flex-row desktop:flex-wrap desktop:gap-5 desktop:justify-center">
-            {data?.recommendations.map((item) => (
+            {data?.recommendations?.map((item) => (
               <li
                 key={item.id}
                 className="w-full flex justify-center desktop:w-auto"
