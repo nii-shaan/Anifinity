@@ -11,7 +11,6 @@ import type { Data } from "@/store/slices/spotlight";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ThreeDots } from "react-loader-spinner";
 import { FaRegPlayCircle } from "react-icons/fa";
-import { CiCircleInfo } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { MdOutlineSlideshow } from "react-icons/md";
@@ -66,17 +65,17 @@ function Carousel() {
                       data.name.length < 20
                         ? "text-4xl"
                         : data.name.length < 50
-                        ? "text-xl"
-                        : "text-lg"
+                        ? "text-2xl desktop:text-xl"
+                        : "text-xl desktop:text-lg"
                     }`}
                   >
                     {data.name}
                   </div>
                   <div
                     id="description"
-                    className="text-[#c4c2c2] text-sm max-w-[350px] pl-12 pt-2 "
+                    className="text-[#c4c2c2] desktop:text-sm max-w-[350px] pl-12 pt-2 "
                   >
-                    {data.description.slice(0, 250) + "..."}
+                    {data.description.slice(0, 230) + "..."}
                   </div>
                 </div>
                 <div id="secTwo" className="h-[40%]  w-full  relative z-10">
@@ -86,25 +85,24 @@ function Carousel() {
                   >
                     <div
                       id="epInfo"
-                      className=" h-full flex items-center justify-center border border-[#5a5858] px-4 gap-1 rounded-xl max-w-[100px]"
+                      className=" text-xl desktop:text-base h-full flex items-center justify-center border border-[#5a5858] px-4 gap-1 rounded-xl max-w-[100px] py-2 desktop:py-1"
                     >
-                      <FaRegPlayCircle className="h-3 w-3  text-[#96e1a9] " />
+                      <FaRegPlayCircle className="h-5 w-5 desktop:h-3  desktop:w-3  text-[#96e1a9] " />
                       {data.episodes.sub}
                     </div>
                     <div className="flex gap-x-4 text-sm">
-                      <span className="">
-                        <CiCircleInfo className="h-5 w-5 text-[#96e1a9] " />
-                      </span>
                       {data.otherInfo.map((item) => (
-                        <span key={item}>{item}</span>
+                        <span key={item} className="text-lg desktop:text-base">
+                          {item}
+                        </span>
                       ))}
                     </div>
                   </div>
-                  <div id="watchBtn" className="max-w-[300px] pl-5 mt-10">
-                    <Link to={`/info/${data.id}`}>
+                  <div id="watchBtn" className="max-w-[300px] pl-5 mt-10 ">
+                    <Link to={`/info/${data.id}`} className="h-full w-full">
                       <Button
                         variant="outline"
-                        className="w-full h-full bg-transparent text-white"
+                        className="w-full h-full bg-transparent text-white text-xl desktop:text-base"
                       >
                         Watch <MdOutlineSlideshow className="h-6 w-6 ml-2" />
                       </Button>

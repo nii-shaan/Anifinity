@@ -49,11 +49,17 @@ function Sections() {
             </div>
           )}
 
-          <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
-            <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
-              <Link to="/top-airing" className="flex">
+          <div
+            id="moreBtn"
+            className=" h-12 flex items-center justify-start text-white cursor-pointer pb-1 mt-6"
+          >
+            <span className="ml-12 w-full flex items-center justify-center  gap-2  ">
+              <Link
+                to="/latest-episodes"
+                className="flex hover:text-[#968e8e] text-3xl desktop:text-base"
+              >
                 More. . .
-                <CiSquareMore className="h-5 w-5  " />
+                <CiSquareMore className="h-10 w-10 desktop:h-5 desktop:w-5  " />
               </Link>
             </span>
           </div>
@@ -87,14 +93,17 @@ function Sections() {
               ))}
             </div>
           )}
-          <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
-            <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
-              <Link to="/most-popular" className="flex">
-                More. . .
-                <CiSquareMore className="h-5 w-5  " />
+          <div
+          id="moreBtn"
+          className=" h-12 flex items-center justify-start text-white cursor-pointer pb-1 mt-6"
+        >
+          <span className="ml-12 w-full flex items-center justify-center  gap-2  ">
+          <Link to="/latest-episodes" className="flex hover:text-[#968e8e] text-3xl desktop:text-base">
+              More. . .
+              <CiSquareMore className="h-10 w-10 desktop:h-5 desktop:w-5  " />
               </Link>
-            </span>
-          </div>
+          </span>
+        </div>
         </div>
 
         <div id="mostFavs" className="min-h-[950px] w-full mb-10">
@@ -122,11 +131,17 @@ function Sections() {
               ))}
             </div>
           )}
-          <div className=" h-12 flex items-end justify-center text-white cursor-pointer pb-1 ">
-            <span className="flex items-center justify-center gap-2 hover:text-[#968e8e] ">
-              <Link to="/most-favorite" className="flex">
+          <div
+            id="moreBtn"
+            className=" h-12 flex items-center justify-start text-white cursor-pointer pb-1 mt-6"
+          >
+            <span className="ml-12 w-full flex items-center justify-center  gap-2  ">
+              <Link
+                to="/latest-episodes"
+                className="flex hover:text-[#968e8e] text-3xl desktop:text-base"
+              >
                 More. . .
-                <CiSquareMore className="h-5 w-5  " />
+                <CiSquareMore className="h-10 w-10 desktop:h-5 desktop:w-5  " />
               </Link>
             </span>
           </div>

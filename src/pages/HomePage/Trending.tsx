@@ -39,7 +39,7 @@ function Trending() {
           Trending
         </div>
 
-        <div className="h-[200px] w-[80%] desktop:w-[800px]">
+        <div className="h-[300px] w-[80%] desktop:w-[800px] desktop:h-[200px]">
           {data.length > 0 ? (
             <div className="h-full w-full ">
               <Swiper
@@ -61,15 +61,15 @@ function Trending() {
                       className="px-2 py-2 flex bg-[#000000] border border-[#454444]"
                     >
                       <div
-                        className="h-full  w-[120px] bg-cover rounded-lg"
+                        className="h-full  w-[250px] bg-cover rounded-lg desktop:w-[120px]"
                         style={{ backgroundImage: `url(${item.poster})` }}
                       ></div>
 
                       <div className=" w-full h-full">
                         <div className="h-[150px] w-full  flex ">
                           <div
-                            className={`h-full w-[75%] text-lg flex items-center p-8  ${
-                              item.name.length < 200 ? "text-sm" : ""
+                            className={`h-full w-[75%] text-2xl flex items-center p-8  ${
+                              item.name.length < 200 ? "desktop:text-sm" : ""
                             }`}
                           >
                             {item.name}
@@ -79,13 +79,13 @@ function Trending() {
                             <span className="text-4xl">{item.rank}</span>
                           </div>
                         </div>
-                        <div className="h-[30px] w-full px-5 ">
+                        <div className="h-[50px] w-full px-5 desktop:h-[30px]" >
                           <Button
                             variant="outline"
                             className="w-full h-full bg-transparent"
                           >
                             <Link
-                              className=" w-full flex items-center justify-center"
+                              className=" w-full flex items-center justify-center text-3xl desktop:text-base"
                               to={`/info/${item.id}`}
                             >
                               Watch{" "}

@@ -51,7 +51,7 @@ function AnimeBlock({ data }: AnimeBlockProps) {
       <HoverCard openDelay={0} closeDelay={50}>
         <HoverCardContent
           side={"left" || "right"}
-          className="w-[300px] bg-[#0f1010] "
+          className="w-[300px] bg-[#0f1010]"
         >
           {hoverData ? (
             <div className="text-white h-full w-full ">
@@ -108,10 +108,10 @@ function AnimeBlock({ data }: AnimeBlockProps) {
           )}
         </HoverCardContent>
 
-        <div className="w-[80%] h-40 flex  justify-center gap-2 bg-[#222831] rounded-lg shadow p-2 overflow-hidden font-f1 text-white cursor-pointer desktop:w-[300px] ">
+        <div className="w-[90%] h-56 flex  justify-center gap-2 bg-[#222831] rounded-lg shadow p-2 overflow-hidden font-f1 text-white cursor-pointer desktop:w-[300px] desktop:h-40 ">
           <div
             onMouseEnter={() => setTrackMouse((prev) => !prev)}
-            className="flex gap-2 bg-neutral-500 w-20 h-5/5 shrink-0 rounded-lg bg-cover cursor-pointer"
+            className="flex gap-2 bg-neutral-500 w-36 h-5/5 shrink-0 rounded-lg bg-cover cursor-pointer desktop:w-20 "
             style={{ backgroundImage: `url(${data.image})` }}
           ></div>
           <div className="flex w-full flex-col items-start justify-end">
@@ -121,15 +121,15 @@ function AnimeBlock({ data }: AnimeBlockProps) {
                   ? "desktop:mb-12"
                   : data.title.length < 60
                   ? "desktop:mb-5"
-                  : "desktop:mb-3 desktop:text-sm"
+                  : "desktop:mb-1 desktop:text-sm"
               }`}
               onMouseEnter={() => setTrackMouse((prev) => !prev)}
             >
-              <span id="title">
+              <span id="title" className="text-2xl desktop:text-base ">
                 <Link to={`/info/${data.id}`}> {data.title} </Link>
               </span>
             </HoverCardTrigger>
-            <div className="h-6 w-full  flex justify-between">
+            <div className="h-12 text-2xl w-full  flex justify-between desktop:h-6 desktop:text-base">
               <div
                 id="epInfo"
                 className=" h-full flex items-center border border-[#5a5858] px-4 gap-1 rounded-xl"

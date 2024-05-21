@@ -45,12 +45,15 @@ function TopUpcomming() {
         )}
         <div
           id="moreBtn"
-          className=" h-12 flex items-center justify-start text-white cursor-pointer pb-1"
+          className=" h-12 flex items-center justify-start text-white cursor-pointer mt-6 pb-1"
         >
-          <span className=" w-full ml-12 flex items-center justify-center  gap-2 ">
-            <Link to="/top-upcoming" className="flex hover:text-[#968e8e] ">
-            More. . .
-            <CiSquareMore className="h-5 w-5  " />
+          <span className="ml-12 w-full flex items-center justify-center  gap-2  ">
+            <Link
+              to="/latest-episodes"
+              className="flex hover:text-[#968e8e] text-3xl desktop:text-base"
+            >
+              More. . .
+              <CiSquareMore className="h-10 w-10 desktop:h-5 desktop:w-5  " />
             </Link>
           </span>
         </div>
