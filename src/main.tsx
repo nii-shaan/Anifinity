@@ -17,6 +17,7 @@ import LatestEpisodes from "./pages/LatestEpisodes.tsx";
 import TopUpcomming from "./pages/TopUpcomming.tsx";
 import Info from "./pages/Info.tsx";
 import Watch from "./pages/Watch.tsx";
+import Search from "./pages/Search.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="/top-upcoming" element={<TopUpcomming />} />
       <Route path="/info/:slug" element={<Info />} />
       <Route path="/watch/:slug" element={<Watch />} />
+      <Route path="/search/:slug" element={<Search />} />
     </Route>
   )
 );
