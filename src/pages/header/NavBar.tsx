@@ -21,15 +21,18 @@ function NavBar() {
     } else {
       toast({
         title: "Search field is empty!",
-        className: "border-2 border-red-600",
+        className: "border-2 border-red-600 text-4xl",
       });
     }
   };
 
   return (
-    <header className="h-16 text-[#F2EFE9] flex justify-end sticky top-0 backdrop-blur-3xl bg-black  z-10 ">
+    <header className="h-28 desktop:h-16 text-[#F2EFE9] flex justify-end sticky top-0 backdrop-blur-3xl bg-black  z-10 ">
       <div className="h-full w-full flex justify-between items-center">
-        <div id="searchBar" className=" text-[#F7F5FB] w-[50%]  h-9  ">
+        <div
+          id="searchBar"
+          className=" text-[#F7F5FB] text-3xl desktop:text-base w-[80%] desktop:w-[50%] desktop:h-9  h-20  "
+        >
           <form
             action=" "
             className="w-full h-full bg-[#222831]  ml-10 flex items-center border-[#878787] border rounded-xl"
@@ -42,9 +45,9 @@ function NavBar() {
               placeholder="Search"
               className="w-[90%]  h-full outline-none rounded-l-xl text-center bg-transparent"
             />
-            <div className="w-[10%] h-full rounded-r-xl flex items-center justify-center hover:bg-[#3b3a3a] ">
+            <div className="w-[20%] border-l-2 desktop:w-[10%] h-full rounded-r-xl flex items-center justify-center hover:bg-[#3b3a3a] ">
               <button type="submit">
-                <FaSearch className="w-6 h-full  cursor-pointer text-[#878787]" />
+                <FaSearch className="desktop:w-6 h-full w-10  cursor-pointer text-[#878787]" />
               </button>
             </div>
           </form>

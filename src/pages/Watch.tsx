@@ -96,10 +96,14 @@ function Watch() {
         description:
           "The Video player has some errors, we are working on it. It will be fixed soon.",
         action: (
-          <ToastAction altText="Help me to fix this issue." className="pr-10 hover:underline hover:text-[#6a6d9e]" onClick={()=>{window.open("https://github.com/nishan812/Anifinity.git")}}>
-           
-              Help to fix
-            
+          <ToastAction
+            altText="Help me to fix this issue."
+            className="pr-10 hover:underline hover:text-[#6a6d9e]"
+            onClick={() => {
+              window.open("https://github.com/nishan812/Anifinity.git");
+            }}
+          >
+            Help to fix
           </ToastAction>
         ),
       });
@@ -127,7 +131,9 @@ function Watch() {
         <div id="animeTitle" className="mt-6 px-2">
           {currentEp ? (
             <>
-              <span className="text-green-400">{currentEp.title}</span>
+              <span className="text-green-400 text-3xl desktop:text-base">
+                {currentEp.title}
+              </span>
             </>
           ) : (
             <Skeleton className="h-8 w-64 bg-[#3b3a3a] " />
@@ -142,7 +148,7 @@ function Watch() {
               value={selectedOption}
               onChange={handleSelectChange}
               aria-label="Select"
-              className="bg-black cursor-pointer py-2 px-4 rounded-lg"
+              className="bg-black cursor-pointer text-lg desktop:text-base py-2 px-8 rounded-lg border"
             >
               {RangeOptions.map((d) => (
                 <option key={d} value={d}>
@@ -154,13 +160,13 @@ function Watch() {
           {dividedEps.length > 0 ? (
             <div
               id="epBoxs"
-              className="w-[95%] flex flex-wrap border border-[#3d3b3b] justify-start ml-[2%] gap-2 p-5 desktop:max-w-[1500px]"
+              className="w-[95%] flex flex-wrap border border-[#3d3b3b] justify-start ml-[2%] gap-4 p-5 desktop:max-w-[1500px]"
             >
               {dividedEps.map((episode, i) => (
                 <Button
                   variant={"ghost"}
                   key={episode.id}
-                  className={` w-10 border hover:bg-[#919191] ${
+                  className={` w-10 text-xl desktop:text-base p-8 desktop:p-2  border hover:bg-[#919191] ${
                     episode.isFiller ? "bg-[#702727]" : ""
                   } ${episode.id == currentEp?.id ? "bg-green-300 " : ""}`}
                   onClick={() => {

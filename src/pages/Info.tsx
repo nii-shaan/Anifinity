@@ -92,24 +92,24 @@ function Info() {
         {data ? (
           <div
             id="poster"
-            className="w-48 h-64 bg-cover bg-no-repeat rounded-md mx-auto"
+            className="w-72 h-96 desktop:w-48 desktop:h-64 bg-cover bg-no-repeat rounded-md mx-auto"
             style={{ backgroundImage: `url(${data?.image})` }}
           ></div>
         ) : (
-          <Skeleton className="w-48 h-64 bg-[#3b3a3a] mx-auto" />
+          <Skeleton className="w-72 h-96 desktop:w-48 desktop:h-64 bg-[#3b3a3a] mx-auto" />
         )}
 
         {data ? (
           <div
             id="title"
-            className={`w-[70%] mt-5 flex justify-center  ${
+            className={`w-[70%] mt-5 flex justify-center text-3xl  ${
               data == undefined || data?.title == undefined
                 ? ""
                 : data?.title.length < 20
-                ? "text-2xl"
+                ? "desktop:text-2xl"
                 : data?.title.length < 30
-                ? "text-xl"
-                : "text-lg"
+                ? "desktop:text-xl"
+                : "desktop:text-lg"
             }`}
           >
             {data?.title}
@@ -124,8 +124,8 @@ function Info() {
           {data ? (
             <div
               id="description"
-              className={`text-sm w-full overflow-hidden text-[#909090] ${
-                !desHidden ? " h-auto" : "max-h-36"
+              className={`text-2xl desktop:text-sm w-full overflow-hidden text-[#909090] ${
+                !desHidden ? " h-auto" : "max-h-40 desktop:max-h-36"
               }`}
             >
               {data?.description}
@@ -160,7 +160,7 @@ function Info() {
         {data ? (
           <div
             id="infos"
-            className="my-5 mx-auto desktop:flex desktop:gap-x-10"
+            className="my-5 mx-auto desktop:flex desktop:gap-x-10 text-3xl desktop:text-base"
           >
             <div>Total Episodes: {data?.totalEpisodes}</div>
             <div>Sub: {data?.hasSub ? "Yes" : "No"}</div>
@@ -183,10 +183,11 @@ function Info() {
             <Button
               disabled={!data}
               variant="outline"
-              className="max-w-40 h-full bg-transparent mx-auto p-36  py-2 flex  hover:border-[#000]"
+              className="max-w-40 h-full bg-transparent mx-auto text-3xl desktop:text-base p-36  py-2 flex  hover:border-[#000]"
             >
               <span className="flex items-center">
-                Watch <MdOutlineSlideshow className="h-6 w-6 ml-2 " />
+                Watch{" "}
+                <MdOutlineSlideshow className="h-10 w-10 desktop:h-6 desktop:w-6 ml-2 " />
               </span>
             </Button>
           </Link>
