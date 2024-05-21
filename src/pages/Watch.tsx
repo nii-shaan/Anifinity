@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import "@vidstack/react/player/styles/default/theme.css";
+import "@vidstack/react/player/styles/default/layouts/video.css";
 import "@vidstack/react/player/styles/default/theme.css";
 import "@vidstack/react/player/styles/default/layouts/video.css";
 import { MediaPlayer, MediaProvider } from "@vidstack/react";
@@ -10,8 +11,6 @@ import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
-import { ToastAction } from "@radix-ui/react-toast";
-
 interface Episodes {
   id: string;
   number: number;
@@ -27,8 +26,6 @@ interface WatchData {
 }
 
 function Watch() {
-  const { toast } = useToast();
-
   /**
    * @param totalItems
    * @param itemsPerOption
@@ -46,6 +43,11 @@ function Watch() {
     return ranges;
   };
 
+  const proxyUrl = (url: any) => {
+    const encodedUrl = encodeURIComponent(url);
+    return `http://localhost:3001/proxy?url=${encodedUrl}`;
+  };
+
   const { slug } = useParams<{ slug: string }>();
   const [episodes, setEpisodes] = useState<Episodes[]>([]);
   const RangeOptions = episodes ? generateRanges(episodes.length, 100) : [];
@@ -59,6 +61,9 @@ function Watch() {
   console.log(watchData);
 
   const [currentEp, setCurrentEp] = useState<Episodes | null>(null);
+
+  const [videoUrl, setVideoUrl] = useState<string | "">("");
+  console.log(videoUrl);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/info?id=${slug}`)
@@ -89,24 +94,19 @@ function Watch() {
         .then((res) => res.json())
         .then((data) => {
           setWatchData(data);
-        });
 
-      toast({
-        title: "Video Player",
-        description:
-          "The Video player has some errors, we are working on it. It will be fixed soon.",
-        action: (
-          <ToastAction
-            altText="Help me to fix this issue."
-            className="pr-10 hover:underline hover:text-[#6a6d9e]"
-            onClick={() => {
-              window.open("https://github.com/nishan812/Anifinity.git");
-            }}
-          >
-            Help to fix
-          </ToastAction>
-        ),
-      });
+          if (data.sources && data.sources.length > 0) {
+            const url = proxyUrl(data.sources[0].url);
+            setVideoUrl(url);
+          } else {
+            // Handle the case when no video source is available
+            console.error("No video source found");
+          }
+        })
+        .catch((error) => {
+          // Handle fetch errors
+          console.error("Error fetching video data:", error);
+        });
     }
   }, [currentEp]);
 
@@ -118,8 +118,8 @@ function Watch() {
       >
         <div id="video" className="w-[85%] ">
           <MediaPlayer
-            title={currentEp?.title}
-            src={`${watchData?.sources[0].url || ""}`}
+            title="Sprite Fight"
+            src="https://files.vidstack.io/sprite-fight/hls/stream.m3u8"
           >
             <MediaProvider />
             <DefaultVideoLayout
