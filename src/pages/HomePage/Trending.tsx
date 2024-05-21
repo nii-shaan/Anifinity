@@ -18,15 +18,15 @@ function Trending() {
   // console.log(data);
 
   useEffect(() => {
-    fetch("http://localhost:4000/anime/home")
+    fetch(`${import.meta.env.VITE_API_TWO}/anime/home`)
       .then((res) => res.json())
       .then((data) => dispatch(loadTrendingData(data.trendingAnimes)))
       .catch(() => {
-        fetch("http://localhost:4000/anime/home")
+        fetch(`${import.meta.env.VITE_API_TWO}/anime/home`)
           .then((res) => res.json())
           .then((data) => dispatch(loadTrendingData(data.trendingAnimes)))
           .catch(() => {
-            fetch("http://localhost:4000/anime/home")
+            fetch(`${import.meta.env.VITE_API_TWO}/anime/home`)
               .then((res) => res.json())
               .then((data) => dispatch(loadTrendingData(data.trendingAnimes)));
           });

@@ -56,10 +56,8 @@ function Watch() {
 
   const [currentEp, setCurrentEp] = useState<Episodes | null>(null);
 
-
-
   useEffect(() => {
-    fetch(`http://localhost:3000/anime/zoro/info?id=${slug}`)
+    fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/info?id=${slug}`)
       .then((res) => res.json())
       .then((data) => {
         setEpisodes(data.episodes);
@@ -79,7 +77,11 @@ function Watch() {
 
   useEffect(() => {
     if (currentEp) {
-      fetch(`http://localhost:3000/anime/zoro/watch?episodeId=${currentEp.id}`)
+      fetch(
+        `${import.meta.env.VITE_API_ONE}/anime/zoro/watch?episodeId=${
+          currentEp.id
+        }`
+      )
         .then((res) => res.json())
         .then((data) => {
           setWatchData(data);
@@ -87,16 +89,16 @@ function Watch() {
     }
   }, [currentEp]);
 
-
-
   return (
     <div
       id="container"
       className="text-white mt-10 w-full flex flex-col items-center"
     >
       <div id="video" className="w-[85%] ">
-        <MediaPlayer title="Sprite Fight" src={`http://localhost:3001/proxy?url=${encodeURIComponent(watchData?.sources[0]?.url || '')}`}
->
+        <MediaPlayer
+          title={currentEp?.title}
+          src={`${watchData?.sources[0].url || ""}`}
+        >
           <MediaProvider />
           <DefaultVideoLayout
             thumbnails="https://files.vidstack.io/sprite-fight/thumbnails.vtt"

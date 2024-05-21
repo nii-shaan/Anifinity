@@ -39,7 +39,7 @@ function AnimeBlock({ data }: AnimeBlockProps) {
   const [trackMouse, setTrackMouse] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/anime/zoro/info?id=${data.id}`)
+    fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/info?id=${data.id}`)
       .then((res) => res.json())
       .then((info) => {
         setHoverData(info);

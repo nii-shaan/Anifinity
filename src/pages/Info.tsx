@@ -70,7 +70,7 @@ function Info() {
     const fetchData = async (retry: number = 3) => {
       try {
         const response = await fetch(
-          `http://localhost:3000/anime/zoro/info?id=${slug}`
+          `${import.meta.env.VITE_API_ONE}/anime/zoro/info?id=${slug}`
         );
         const result = await response.json();
         setData(result);
@@ -103,7 +103,7 @@ function Info() {
           <div
             id="title"
             className={`w-[70%] mt-5 flex justify-center  ${
-              data == undefined
+              data == undefined || data?.title == undefined
                 ? ""
                 : data?.title.length < 20
                 ? "text-2xl"

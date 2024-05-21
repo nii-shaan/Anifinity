@@ -1,5 +1,7 @@
 import Page from "@/components/me/Page";
 function TopUpcomming() {
-  return <Page url="http://localhost:3000/anime/zoro/top-upcoming" />;
+  return (
+    <Page url={`${import.meta.env.VITE_API_ONE}/anime/zoro/top-upcoming`} />
+  );
 }
 export default TopUpcomming;

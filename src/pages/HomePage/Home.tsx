@@ -22,16 +22,20 @@ function Home() {
   /**
    * Tried Fetching Api 3 times
    */
+  console.log(import.meta.env.VITE_API_ONE);
+  
+
+  //TODO: need to optimize this fetching method
   useEffect(() => {
-    fetch("http://localhost:4000/anime/home")
+    fetch(`${import.meta.env.VITE_API_TWO}/anime/home`)
       .then((res) => res.json())
       .then((data) => dispatch(loadSpotlightData(data.spotlightAnimes)))
       .catch(() => {
-        fetch("http://localhost:4000/anime/home")
+        fetch(`${import.meta.env.VITE_API_TWO}/anime/home`)
           .then((res) => res.json())
           .then((data) => dispatch(loadSpotlightData(data.spotlightAnimes)))
           .catch(() => {
-            fetch("http://localhost:4000/anime/home")
+            fetch(`${import.meta.env.VITE_API_TWO}/anime/home`)
               .then((res) => res.json())
               .then((data) =>
                 dispatch(loadSpotlightData(data.spotlightAnimes))
@@ -39,71 +43,71 @@ function Home() {
           });
       });
 
-    fetch("http://localhost:3000/anime/zoro/top-airing")
+    fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/top-airing`)
       .then((res) => res.json())
       .then((taData) => dispatch(loadTopAiringData(taData.results)))
       .catch(() => {
-        fetch("http://localhost:3000/anime/zoro/top-airing")
+        fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/top-airing`)
           .then((res) => res.json())
           .then((taData) => dispatch(loadTopAiringData(taData.results)))
           .catch(() => {
-            fetch("http://localhost:3000/anime/zoro/top-airing")
+            fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/top-airing`)
               .then((res) => res.json())
               .then((taData) => dispatch(loadTopAiringData(taData.results)));
           });
       });
 
-    fetch("http://localhost:3000/anime/zoro/most-popular")
+    fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/most-popular`)
       .then((res) => res.json())
       .then((data) => dispatch(loadMostPopularData(data.results)))
       .catch(() => {
-        fetch("http://localhost:3000/anime/zoro/most-popular")
+        fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/most-popular`)
           .then((res) => res.json())
           .then((data) => dispatch(loadMostPopularData(data.results)))
           .catch(() => {
-            fetch("http://localhost:3000/anime/zoro/most-popular")
+            fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/most-popular`)
               .then((res) => res.json())
               .then((data) => dispatch(loadMostPopularData(data.results)));
           });
       });
 
-    fetch("http://localhost:3000/anime/zoro/most-favorite")
+    fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/most-favorite`)
       .then((res) => res.json())
       .then((data) => dispatch(loadMostFavData(data.results)))
       .catch(() => {
-        fetch("http://localhost:3000/anime/zoro/most-favorite")
+        fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/most-favorite`)
           .then((res) => res.json())
           .then((data) => dispatch(loadMostFavData(data.results)))
           .catch(() => {
-            fetch("http://localhost:3000/anime/zoro/most-favorite")
+            fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/most-favorite`)
               .then((res) => res.json())
               .then((data) => dispatch(loadMostFavData(data.results)));
           });
       });
 
-    fetch("http://localhost:3000/anime/zoro/recent-episodes")
+    fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/recent-episodes`)
       .then((res) => res.json())
       .then((data) => dispatch(loadLatestEpData(data.results)))
       .catch(() => {
-        fetch("http://localhost:3000/anime/zoro/recent-episodes")
+        fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/recent-episodes`)
           .then((res) => res.json())
           .then((data) => dispatch(loadLatestEpData(data.results)))
           .catch(() => {
-            fetch("http://localhost:3000/anime/zoro/recent-episodes")
+            fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/recent-episodes`)
               .then((res) => res.json())
               .then((data) => dispatch(loadLatestEpData(data.results)));
           });
       });
 
-    fetch("http://localhost:3000/anime/zoro/top-upcoming")
+    fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/top-upcoming`)
       .then((res) => res.json())
       .then((data) => dispatch(loadTopUpcommingData(data.results)))
       .catch(() => {
-        fetch("http://localhost:3000/anime/zoro/top-upcoming")
+        fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/top-upcoming`)
           .then((res) => res.json())
           .then((data) => dispatch(loadTopUpcommingData(data.results)))
           .catch(() => {
-            fetch("http://localhost:3000/anime/zoro/top-upcoming")
+            fetch(`${import.meta.env.VITE_API_ONE}/anime/zoro/top-upcoming`)
               .then((res) => res.json())
               .then((data) => dispatch(loadTopUpcommingData(data.results)));
           });
