@@ -18,6 +18,7 @@ import TopUpcomming from "./pages/TopUpcomming.tsx";
 import Info from "./pages/Info.tsx";
 import Watch from "./pages/Watch.tsx";
 import Search from "./pages/Search.tsx";
+import { Toaster } from "@/components/ui/toaster";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -38,6 +39,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   // <React.StrictMode>
   <Provider store={store}>
     <RouterProvider router={router} />
+    <Toaster />
   </Provider>
   // </React.StrictMode>
 );

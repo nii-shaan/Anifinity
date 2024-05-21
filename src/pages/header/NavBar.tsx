@@ -2,9 +2,10 @@ import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useToast } from "@/components/ui/use-toast";
 function NavBar() {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -17,12 +18,17 @@ function NavBar() {
     if (searchValue !== "") {
       navigate(`/search/${searchValue}`);
       setSearchValue("");
+    } else {
+      toast({
+        title: "Search field is empty!",
+        className: "border-2 border-red-600",
+      });
     }
   };
 
   return (
-    <header className="h-16  text-[#F2EFE9] flex justify-end sticky top-0 backdrop-blur-3xl  z-10 ">
-      <div className="h-full w-full   flex justify-between items-center">
+    <header className="h-16 text-[#F2EFE9] flex justify-end sticky top-0 backdrop-blur-3xl bg-black  z-10 ">
+      <div className="h-full w-full flex justify-between items-center">
         <div id="searchBar" className=" text-[#F7F5FB] w-[50%]  h-9  ">
           <form
             action=" "
