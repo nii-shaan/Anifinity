@@ -144,7 +144,7 @@ function Watch() {
               aria-label="Select"
               className="bg-black cursor-pointer py-2 px-4 rounded-lg"
             >
-              {RangeOptions.map((d, i) => (
+              {RangeOptions.map((d) => (
                 <option key={d} value={d}>
                   {d}
                 </option>
