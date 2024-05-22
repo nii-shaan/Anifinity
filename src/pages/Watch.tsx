@@ -6,11 +6,12 @@ import "@vidstack/react/player/styles/default/theme.css";
 import "@vidstack/react/player/styles/default/layouts/video.css";
 import "@vidstack/react/player/styles/default/theme.css";
 import "@vidstack/react/player/styles/default/layouts/video.css";
-import { MediaPlayer, MediaProvider } from "@vidstack/react";
+import { isHLSProvider, MediaPlayer, MediaProvider } from "@vidstack/react";
 import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
+import Hls from "hls.js";
 interface Episodes {
   id: string;
   number: number;
@@ -23,6 +24,11 @@ interface WatchData {
   subtitles: { url: string; lang: string }[];
   intro: { start: number; end: number };
   outro: { start: number; end: number };
+}
+function onProviderChange(provider: any) {
+  if (isHLSProvider(provider)) {
+    provider.library = Hls;
+  }
 }
 
 function Watch() {
@@ -43,13 +49,14 @@ function Watch() {
     return ranges;
   };
 
-  const proxyUrl = (url: any) => {
-    const encodedUrl = encodeURIComponent(url);
-    return `http://localhost:3001/proxy?url=${encodedUrl}`;
-  };
+  // const proxyUrl = (url: any) => {
+  //   const encodedUrl = encodeURIComponent(url);
+  //   return `http://localhost:3001/proxy?url=${encodedUrl}`;
+  // };
 
   const { slug } = useParams<{ slug: string }>();
   const [episodes, setEpisodes] = useState<Episodes[]>([]);
+
   const RangeOptions = episodes ? generateRanges(episodes.length, 100) : [];
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [dividedEps, setDividedEps] = useState<Episodes[] | []>([]);
@@ -58,7 +65,6 @@ function Watch() {
     setCurrentEp(dividedEps[0]);
   };
   const [watchData, setWatchData] = useState<WatchData | null>(null);
-  console.log(watchData);
 
   const [currentEp, setCurrentEp] = useState<Episodes | null>(null);
 
@@ -96,7 +102,7 @@ function Watch() {
           setWatchData(data);
 
           if (data.sources && data.sources.length > 0) {
-            const url = proxyUrl(data.sources[0].url);
+            const url = data.sources[0].url;
             setVideoUrl(url);
           } else {
             // Handle the case when no video source is available
@@ -110,6 +116,13 @@ function Watch() {
     }
   }, [currentEp]);
 
+  useEffect(() => {
+    if (currentEp && watchData && watchData.sources.length > 0) {
+      const url = watchData.sources[0].url;
+      setVideoUrl(url);
+    }
+  }, [currentEp, watchData]);
+
   if (dividedEps) {
     return (
       <div
@@ -117,16 +130,25 @@ function Watch() {
         className="text-white pt-10 w-full flex flex-col items-center bg-[#0f1010]"
       >
         <div id="video" className="w-[85%] ">
-          <MediaPlayer
-            title="Sprite Fight"
-            src="https://files.vidstack.io/sprite-fight/hls/stream.m3u8"
-          >
-            <MediaProvider />
-            <DefaultVideoLayout
-              thumbnails="https://files.vidstack.io/sprite-fight/thumbnails.vtt"
-              icons={defaultLayoutIcons}
-            />
-          </MediaPlayer>
+          {watchData && (
+            <MediaPlayer
+              title={currentEp?.title}
+              src={`https://m3u8proxy.lw-nishan.workers.dev/?url=${encodeURIComponent(
+                videoUrl || ""
+              )}&referer=${encodeURIComponent(
+                videoUrl ? `https://${new URL(videoUrl).hostname}` : ""
+              )}&origin=${encodeURIComponent(
+                videoUrl ? `https://${new URL(videoUrl).hostname}` : ""
+              )}`}
+              onProviderChange={onProviderChange}
+            >
+              <MediaProvider />
+              <DefaultVideoLayout
+                thumbnails="https://files.vidstack.io/sprite-fight/thumbnails.vtt"
+                icons={defaultLayoutIcons}
+              />
+            </MediaPlayer>
+          )}
         </div>
         <div id="animeTitle" className="mt-6 px-2">
           {currentEp ? (
