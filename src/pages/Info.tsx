@@ -139,7 +139,7 @@ function Info() {
                 onClick={() => {
                   setDesHidden(false);
                 }}
-                className="flex gap-2 cursor-pointer"
+                className="flex gap-2 cursor-pointer text-3xl  desktop:text-base"
               >
                 More
                 <FaArrowRightLong className="w-5 h-5 mt-0.5" />
@@ -149,7 +149,7 @@ function Info() {
                 onClick={() => {
                   setDesHidden(true);
                 }}
-                className="flex gap-2  cursor-pointer"
+                className="flex gap-2  cursor-pointer text-3xl  desktop:text-base"
               >
                 <FaArrowLeftLong className="w-5 h-5 mt-0.5" />
                 Less

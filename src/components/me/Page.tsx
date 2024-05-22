@@ -84,7 +84,7 @@ function Page({ url }: PagePropsType) {
 
   if (loaded) {
     return (
-      <div id="main" className="w-full bg-[#0f1010]">
+      <div id="main" className="w-full bg-[#0f1010] ">
         <div id="gobackButton" className="w-full py-4">
           <GobackButton />
         </div>
@@ -101,22 +101,25 @@ function Page({ url }: PagePropsType) {
 
         <div
           id="paginateSec"
-          className="my-10 w-full flex justify-center   text-white"
+          className="mt-10 pb-10 w-full flex justify-center   text-white"
         >
           <Button
             variant="outline"
             onClick={handlePreviousPage}
-            className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
+            className=" px-6 py-8 desktop:px-3 desktop:py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
           >
             {" "}
-            <IoIosArrowRoundBack className="h-6 w-6" />
+            <IoIosArrowRoundBack className="h-20 w-20 desktop:h-6 desktop:w-6" />
           </Button>
 
-          <div id="nums" className="  flex items-center ">
+          <div
+            id="nums"
+            className="  flex items-center text-3xl desktop:text-base "
+          >
             {totalPages == null ? null : currentPage == totalPages ||
               currentPage > Math.floor(totalPages / 2) ? (
               <span
-                className="cursor-pointer px-3 ml-2  rounded-lg hover:bg-[#4e4d4d]"
+                className="cursor-pointer px-3 ml-2   rounded-lg hover:bg-[#4e4d4d]"
                 onClick={() => {
                   setLoaded(false);
                   setCurrentPage(1);
@@ -135,11 +138,11 @@ function Page({ url }: PagePropsType) {
             >
               {currentPage != 1 ? currentPage - 1 : null}
             </span>
-            <span className="text-green-400 mx-2 text-2xl border px-3 rounded-full">
+            <span className="text-green-400 mx-2 text-4xl  px-3 rounded-full">
               {currentPage}
             </span>
             <span
-              className="cursor-pointer px-3  rounded-lg hover:bg-[#4e4d4d]"
+              className="cursor-pointer px-3   rounded-lg hover:bg-[#4e4d4d]"
               onClick={() => {
                 setLoaded(false);
                 setCurrentPage(currentPage + 1);
@@ -163,9 +166,9 @@ function Page({ url }: PagePropsType) {
           <Button
             variant="outline"
             onClick={handleNextPage}
-            className="px-3 py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
+            className="px-6 py-8 desktop:px-3 desktop:py-1 flex border rounded-xl ml-5 bg-transparent  hover:border-black"
           >
-            <IoIosArrowRoundForward className="h-6 w-6" />
+            <IoIosArrowRoundForward className="h-20 w-20 desktop:h-6 desktop:w-6" />
           </Button>
         </div>
       </div>

@@ -22,7 +22,7 @@ function Home() {
   /**
    * Tried Fetching Api 3 times
    */
-  console.log(import.meta.env.VITE_API_ONE);
+
   
 
   //TODO: need to optimize this fetching method

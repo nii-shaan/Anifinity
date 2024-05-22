@@ -53,7 +53,6 @@ function Watch() {
   const [dividedEps, setDividedEps] = useState<Episodes[] | []>([]);
   const [watchData, setWatchData] = useState<WatchData | null>(null);
   const [currentEp, setCurrentEp] = useState<Episodes | null>(null);
-  console.log(currentEp);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value);
