@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-function Alert({ closeFunction }: { closeFunction: Function }) {
+function Modal({ closeFunction }: { closeFunction: Function }) {
   const [checked, setChecked] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(true);
 
@@ -11,7 +11,7 @@ function Alert({ closeFunction }: { closeFunction: Function }) {
   };
   return (
     <div
-      className={`fixed inset-0 bg-[#241f1fd0] z-50 flex items-center justify-center ${
+      className={`fixed inset-0 bg-[#111111f2] z-50 flex items-center justify-center ${
         visible ? "animate-fade-in" : "animate-fade-out"
       }`}
     >
@@ -90,4 +90,4 @@ function Alert({ closeFunction }: { closeFunction: Function }) {
   );
 }
 
-export default Alert;
+export default Modal;

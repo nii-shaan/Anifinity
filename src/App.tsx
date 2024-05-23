@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Footer from "./pages/footer/Footer";
 import NavBar from "./pages/header/NavBar";
-import Alert from "./pages/Alert";
+import Modal from "./pages/Modal";
 
 import { Outlet } from "react-router-dom";
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      {modal && <Alert closeFunction={setModal} />}
+      {modal && <Modal closeFunction={setModal} />}
       <NavBar />
       <Outlet />
       <Footer />
