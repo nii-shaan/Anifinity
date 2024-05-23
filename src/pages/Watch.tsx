@@ -97,7 +97,7 @@ function Watch() {
   if (dividedEps) {
     return (
       <>
-        {window.scrollTo(20, 20)}
+      
 
         <div
           id="container"

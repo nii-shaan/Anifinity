@@ -40,8 +40,8 @@ module.exports = {
         },
       },
       animation: {
-        "fade-in": "fadeIn 0.8s ease-out forwards",
-        "fade-out": "fadeOut 1s ease-out forwards",
+        "fade-in": "fadeIn 0.6s ease-out forwards",
+        "fade-out": "fadeOut 0.6s ease-out forwards",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

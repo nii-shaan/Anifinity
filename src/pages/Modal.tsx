@@ -15,7 +15,7 @@ function Modal({ closeFunction }: { closeFunction: Function }) {
         visible ? "animate-fade-in" : "animate-fade-out"
       }`}
     >
-      <div className="bg-[#080707] h-[800px] w-[90%] max-w-[800px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40">
+      <div className="bg-[#080707] h-[800px] w-[95%] max-w-[800px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40">
         <div id="text" className="text-[#b1b1b1] text-xl p-10">
           <p>
             This project was created just for learning purposes to improve my
