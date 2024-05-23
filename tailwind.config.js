@@ -11,11 +11,8 @@ module.exports = {
   theme: {
     screens: {
       tablet: "640px",
-      // => @media (min-width: 640px) { ... }
       desktop: "1024px",
-      // => @media (min-width: 1280px) { ... }
     },
-
     container: {
       center: true,
       padding: "2rem",
@@ -24,14 +21,15 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        f1: ["Artifika", "serif"],
-      },
-      backgroundImage: {
-        vignette:
-          "linear-gradient(to  right, rgba(0,0,0,0.9) 30%, transparent)",
-      },
       keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -42,8 +40,16 @@ module.exports = {
         },
       },
       animation: {
+        "fade-in": "fadeIn 0.8s ease-out forwards",
+        "fade-out": "fadeOut 1s ease-out forwards",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        f1: ["Artifika", "serif"],
+      },
+      backgroundImage: {
+        vignette: "linear-gradient(to right, rgba(0,0,0,0.9) 30%, transparent)",
       },
     },
   },

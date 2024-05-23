@@ -3,8 +3,18 @@ import { Button } from "@/components/ui/button";
 
 function Alert({ closeFunction }: { closeFunction: Function }) {
   const [checked, setChecked] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(true);
+
+  const handleClose = () => {
+    setVisible(false);
+    setTimeout(() => closeFunction(false), 2000);
+  };
   return (
-    <div className="h-full w-full bg-[#241f1fd0] fixed z-50 ">
+    <div
+      className={`fixed inset-0 bg-[#241f1fd0] z-50 flex items-center justify-center ${
+        visible ? "animate-fade-in" : "animate-fade-out"
+      }`}
+    >
       <div className="bg-[#080707] h-[800px] w-[90%] max-w-[800px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40">
         <div id="text" className="text-[#b1b1b1] text-xl p-10">
           <p>
@@ -70,9 +80,7 @@ function Alert({ closeFunction }: { closeFunction: Function }) {
             variant={"outline"}
             className="bg-transparent text-white text-2xl px-12 py-6"
             disabled={!checked}
-            onClick={() => {
-              closeFunction(false);
-            }}
+            onClick={handleClose}
           >
             Okay
           </Button>
