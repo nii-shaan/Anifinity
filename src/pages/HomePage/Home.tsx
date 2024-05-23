@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Carousel from "./Carousel";
 import { useDispatch } from "react-redux";
 
@@ -13,8 +13,8 @@ import {
 import LatestEps from "./LatestEps";
 import Sections from "./Sections";
 import TopUpcomming from "./TopUpcomming";
-
 import Trending from "./Trending";
+
 
 function Home() {
   const dispatch = useDispatch();
@@ -22,8 +22,6 @@ function Home() {
   /**
    * Tried Fetching Api 3 times
    */
-
-  
 
   //TODO: need to optimize this fetching method
   useEffect(() => {
@@ -114,8 +112,11 @@ function Home() {
       });
   }, []);
 
+  
+
   return (
     <div className="bg-[#0f1010] w-full  ">
+     
       <div id="carouselSection" className="w-full  h-[600px] ">
         <Carousel />
       </div>
