@@ -19,7 +19,7 @@ function Search() {
   return (
     <>
       {window.scrollTo(0, 0)}
-      <div className="py-5 bg-[#0f1010] min-h-[600px]">
+      <div className="py-5 bg-[#0f1010] min-h-screen">
         <div id="text" className="text-white text-4xl desktop:text-2xl">
           {" "}
           Showing results for: <span className="text-[#96e1a9]">{slug}</span>

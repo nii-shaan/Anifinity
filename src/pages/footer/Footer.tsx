@@ -18,7 +18,7 @@ function Footer() {
       </div>
       <div className="h-10 w-full mt-5 pl-8 text-4xl ">
         <div>Enjoy some</div>
-        <ul className="text-2xl flex  gap-5 pt-6 flex-wrap">
+        <ul className="text-2xl flex  gap-5 pt-6 flex-wrap desktop:text-base">
           <li
             onClick={() => navigate("/search/one piece")}
             className="cursor-pointer hover:underline"
@@ -38,7 +38,7 @@ function Footer() {
             Bleach
           </li>
           <li
-            onClick={() => navigate("/search/deathnote")}
+            onClick={() => navigate("/search/death note")}
             className="cursor-pointer hover:underline"
           >
             Deathnote
