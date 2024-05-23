@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { GoDot } from "react-icons/go";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineSlideshow } from "react-icons/md";
 import { Skeleton } from "@/components/ui/skeleton";
 import GobackButton from "@/components/me/GobackButton";
@@ -60,6 +60,7 @@ interface DataTypes {
 
 function Info() {
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   const [data, setData] = useState<DataTypes | null>(null);
 
@@ -179,18 +180,19 @@ function Info() {
           </div>
         )}
         <div id="watch">
-          <Link to={`/watch/${data?.id}`} className=" ">
-            <Button
-              disabled={!data}
-              variant="outline"
-              className="max-w-40 h-full bg-transparent mx-auto text-3xl desktop:text-base p-36  py-2 flex  hover:border-[#000]"
-            >
-              <span className="flex items-center">
-                Watch{" "}
-                <MdOutlineSlideshow className="h-10 w-10 desktop:h-6 desktop:w-6 ml-2 " />
-              </span>
-            </Button>
-          </Link>
+          <Button
+            disabled={!data}
+            variant="outline"
+            className="max-w-40 h-full bg-transparent mx-auto text-3xl desktop:text-base p-36  py-2 flex  hover:border-[#000]"
+            onClick={() => {
+              navigate(`/watch/${data?.id}`);
+            }}
+          >
+            <span className="flex items-center">
+              Watch{" "}
+              <MdOutlineSlideshow className="h-10 w-10 desktop:h-6 desktop:w-6 ml-2 " />
+            </span>
+          </Button>
         </div>
       </div>
       <div id="recommendations" className="w-full mt-10 ">

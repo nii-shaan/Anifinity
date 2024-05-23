@@ -3,6 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import logo from "@/assets/logo.svg";
 function NavBar() {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -30,8 +31,17 @@ function NavBar() {
     <header className="h-28 desktop:h-16 text-[#F2EFE9] flex justify-end sticky top-0 backdrop-blur-3xl bg-black  z-10 ">
       <div className="h-full w-full flex justify-between items-center">
         <div
+          id="logo"
+          className="ml-8 h-10   w-44 bg-contain bg-no-repeat cursor-pointer"
+          style={{ backgroundImage: `url(${logo})` }}
+          onClick={() => {
+            navigate("/");
+          }}
+        ></div>
+
+        <div
           id="searchBar"
-          className=" text-[#F7F5FB] text-3xl desktop:text-base w-[80%] desktop:w-[50%] desktop:h-9  h-20  "
+          className=" text-[#F7F5FB] text-2xl desktop:text-base w-[60%] desktop:w-[50%] desktop:h-9  h-16 mr-10  "
         >
           <form
             action=" "

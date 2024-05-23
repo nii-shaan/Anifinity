@@ -19,18 +19,51 @@ import Info from "./pages/Info.tsx";
 import Watch from "./pages/Watch.tsx";
 import Search from "./pages/Search.tsx";
 import { Toaster } from "@/components/ui/toaster";
+import ErrorPage from "./pages/ErrorPage.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route path="" element={<Home />} />
-      <Route path="/top-airing" element={<TopAiring />} />
-      <Route path="/most-popular" element={<MostPopular />} />
-      <Route path="/most-favorite" element={<MostFavorite />} />
-      <Route path="/latest-episodes" element={<LatestEpisodes />} />
-      <Route path="/top-upcoming" element={<TopUpcomming />} />
-      <Route path="/info/:slug" element={<Info />} />
-      <Route path="/watch/:slug" element={<Watch />} />
-      <Route path="/search/:slug" element={<Search />} />
+    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+      <Route path="" element={<Home />} errorElement={<ErrorPage />} />
+      <Route
+        path="/top-airing"
+        element={<TopAiring />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/most-popular"
+        element={<MostPopular />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/most-favorite"
+        element={<MostFavorite />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/latest-episodes"
+        element={<LatestEpisodes />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/top-upcoming"
+        element={<TopUpcomming />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/info/:slug"
+        element={<Info />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/watch/:slug"
+        element={<Watch />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/search/:slug"
+        element={<Search />}
+        errorElement={<ErrorPage />}
+      />
     </Route>
   )
 );
